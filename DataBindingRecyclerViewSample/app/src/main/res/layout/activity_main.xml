@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data class="MainActivityBinding">
+
+        <variable
+                name="listener"
+                type="com.app.databinding.listener.DataBindingListener" />
+    </data>
+
+    <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/tvSample"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/sample_text"
+                android:textColor="@android:color/holo_blue_dark"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvLocation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/btnPress"
+                android:layout_below="@+id/tvSample"
+                android:layout_marginTop="@dimen/_10sdp" />
+
+        <Button
+                android:id="@+id/btnPress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/_36sdp"
+                android:onClick="@{(v) -> listener.onButtonClick()}"
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingEnd="@dimen/_15sdp"
+                android:text="@string/click_now"
+                android:textColor="@color/colorAccent"
+                android:textSize="@{listener.onSize()}" />
+
+    </RelativeLayout>
+</layout>

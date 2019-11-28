@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+
+    <data class="LocationItemBinding">
+        <variable name="stateKt" type="com.app.databinding.model.StateKt"/>
+    </data>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:layout_margin="@dimen/_5sdp">
+        <TextView
+                android:id="@+id/tvId"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                tools:text="1011"
+                android:textSize="@dimen/_14ssp"
+                android:padding="@dimen/_5sdp"
+                android:text="@{stateKt.id}"
+                android:textColor="@android:color/white"/>
+
+        <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="match_parent" android:layout_height="match_parent"
+                tools:text="Madhya Pradesh"
+                android:textSize="@dimen/_14ssp"
+                android:padding="@dimen/_5sdp"
+                android:text="@{stateKt.name}"
+                android:textColor="@android:color/white"/>
+    </LinearLayout>
+</layout>

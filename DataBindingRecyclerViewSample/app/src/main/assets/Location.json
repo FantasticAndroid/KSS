@@ -1,0 +1,189 @@
+{
+  "data": {
+    "states": [
+      {
+        "id": "893",
+        "name": "अंडमान और निकोबार द्व,ीप समूह",
+        "nameInEnglish": "Andaman and Nicobar Islands"
+      },
+      {
+        "id": "875",
+        "name": "अरुणाचल प्रदेश",
+        "nameInEnglish": "Arunachal Pradesh"
+      },
+      {
+        "id": "876",
+        "name": "असम",
+        "nameInEnglish": "Assam"
+      },
+      {
+        "id": "874",
+        "name": "आंध्र प्रदेश",
+        "nameInEnglish": "Andhra Pradesh"
+      },
+      {
+        "id": "891",
+        "name": "उत्तराखंड",
+        "nameInEnglish": "Uttarakhand"
+      },
+      {
+        "id": "887",
+        "name": "ओडिशा",
+        "nameInEnglish": "Odisha"
+      },
+      {
+        "id": "881",
+        "name": "कर्नाटक",
+        "nameInEnglish": "Karnataka"
+      },
+      {
+        "id": "882",
+        "name": "केरल",
+        "nameInEnglish": "Kerala"
+      },
+      {
+        "id": "878",
+        "name": "गुजरात",
+        "nameInEnglish": "Gujarat"
+      },
+      {
+        "id": "877",
+        "name": "गोआ",
+        "nameInEnglish": "Goa"
+      },
+      {
+        "id": "894",
+        "name": "चंडीगढ़",
+        "nameInEnglish": "Chandigarh"
+      },
+      {
+        "id": "880",
+        "name": "जम्मू और कश्मीर",
+        "nameInEnglish": "Jammu and Kashmir"
+      },
+      {
+        "id": "889",
+        "name": "तमिलनाडु",
+        "nameInEnglish": "Tamil Nadu"
+      },
+      {
+        "id": "890",
+        "name": "त्रिपुरा",
+        "nameInEnglish": "Tripura"
+      },
+      {
+        "id": "896",
+        "name": "दमन और दीव",
+        "nameInEnglish": "Daman and Diu"
+      },
+      {
+        "id": "895",
+        "name": "दादरा और नगर ​​हवेली",
+        "nameInEnglish": "Dadra and Nagar Haveli"
+      },
+      {
+        "id": "886",
+        "name": "नागालैंड",
+        "nameInEnglish": "Nagaland"
+      },
+      {
+        "id": "892",
+        "name": "पश्चिम बंग,ाल",
+        "nameInEnglish": "West Bengal"
+      },
+      {
+        "id": "898",
+        "name": "पुडुचेरी",
+        "nameInEnglish": "Puducherry"
+      },
+      {
+        "id": "883",
+        "name": "मणिपुर",
+        "nameInEnglish": "Manipur"
+      },
+      {
+        "id": "504",
+        "name": "मध्यप्रदेश",
+        "nameInEnglish": "Madhya Pradesh"
+      },
+      {
+        "id": "885",
+        "name": "मिज़ोरम",
+        "nameInEnglish": "Mizoram"
+      },
+      {
+        "id": "884",
+        "name": "मेघालय",
+        "nameInEnglish": "Meghalaya"
+      },
+      {
+        "id": "897",
+        "name": "लक्षद्वीप",
+        "nameInEnglish": "Lakshadweep"
+      },
+      {
+        "id": "888",
+        "name": "सिक्किम",
+        "nameInEnglish": "Sikkim"
+      },
+      {
+        "id": "879",
+        "name": "हिमाचल प्रदेश",
+        "nameInEnglish": "Himachal Pradesh"
+      },
+      {
+        "id": "380",
+        "name": "छत्तीसगढ़",
+        "nameInEnglish": "Chhattisgarh"
+      },
+      {
+        "id": "350",
+        "name": "राजस्थान",
+        "nameInEnglish": "Rajasthan"
+      },
+      {
+        "id": "607",
+        "name": "चंडीगढ़  हिमाचल",
+        "nameInEnglish": "Chandigarh Himachal"
+      },
+      {
+        "id": "381",
+        "name": "पंजाब",
+        "nameInEnglish": "Punjab"
+      },
+      {
+        "id": "609",
+        "name": "हरियाणा",
+        "nameInEnglish": "Haryana"
+      },
+      {
+        "id": "279",
+        "name": "बिहार",
+        "nameInEnglish": "Bihar"
+      },
+      {
+        "id": "351",
+        "name": "झारखंड़",
+        "nameInEnglish": "Jharkhand"
+      },
+      {
+        "id": "49",
+        "name": "महाराष्ट्र",
+        "nameInEnglish": "Maharashtra"
+      },
+      {
+        "id": "46",
+        "name": "उत्तरप्रदेश",
+        "nameInEnglish": "Uttar Pradesh"
+      },
+      {
+        "id": "300",
+        "name": "दिल्ली",
+        "nameInEnglish": "Delhi"
+      }
+    ]
+  },
+  "code": 200,
+  "message": "Success",
+  "time": 1565258595
+}
