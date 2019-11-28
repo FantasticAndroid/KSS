@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="mega_offer_db_name">MegaOffer.sqlite</string>
+    <integer name="mega_offer_db_version">1</integer>
+</resources>

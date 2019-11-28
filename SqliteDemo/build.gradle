@@ -1,0 +1,59 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.2'
+        
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+ext {
+    // This ext is used to make BUILD Apk for Android Versions N and above for running Dynamic Features as On-Demand
+    // This ext will have the higher VERSION_CODE
+    // Do not forget to comment MAX_SDK in app' build.gradle. ( //maxSdkVersion rootProject.ext.MAX_SDK )
+    IS_DF_ON_DEMAND = true
+    VERSION_CODE = 358
+    MIN_SDK = 21
+    TARGET_SDK = 28
+    RENDER_SCRIPT_TARGET_API = 24
+}
+
+ext {
+    COMPILE_SDK = 28
+    VERSION_NAME = "6.1.0.1"
+    BUTTERKNIFE = "10.1.0"
+    CALLIGRAPHY = "2.3.0"
+    EXOPLAYER = "2.10.4"
+    FACEBOOK = "5.0.0"
+    GLIDE = "4.9.0"
+    GSON = "2.8.5"
+    GOOGLE_ADS_SDK = "18.3.0"
+    GOOGLE_ANALYTICS = "17.0.0"
+    PLAY_SERVICE_VERSION = "16.0.0"
+    RETROFIT = "2.6.1"
+    ROOM = '2.2.1'
+    SUPPORT_API_VERSION = '1.0.0'
+    SUPPORT_API_VERSION_APP_COMPAT = '1.1.0'
+    CONSTRAINT_LAYOUT = '1.1.3'
+    ANDROID_X_FRAGMENT = '1.1.0'
+    DEBUG_IN_RELEASE = false
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
