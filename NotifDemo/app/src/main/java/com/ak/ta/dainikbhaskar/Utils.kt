@@ -3,7 +3,6 @@ package com.ak.ta.dainikbhaskar
 import android.app.Notification
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.media.RingtoneManager
 import android.os.Build
@@ -16,6 +15,9 @@ import com.ak.ta.dainikbhaskar.activity.R
 class Utils {
 
     companion object {
+        const val NOTIFICATION_APPEND_ID = 1564565
+        const val KEY_NOTIF_MODEL = "key_notif_model"
+
         fun getAppIcon(): Int {
             return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 R.mipmap.ic_notification_small
