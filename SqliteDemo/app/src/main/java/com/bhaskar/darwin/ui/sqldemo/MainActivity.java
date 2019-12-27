@@ -18,5 +18,6 @@ public class MainActivity extends AppCompatActivity {
     private void useSqlLite() {
         OfferPointsUtils.insertOrUpdatePoints((MainApp) getApplication(),
                 1);
+        OfferPointsUtils.getAllPointsAndSyncToServer((MainApp) getApplication());
     }
 }

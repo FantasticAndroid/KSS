@@ -54,7 +54,7 @@ public class OfferSqlManager {
             Runnable runnable = () -> {
                 try {
                     PointSyncTableDao pointSyncTableDao = new PointSyncTableDao();
-                    pointSyncTableDao.insertOrUpdatePoint(offerSqlAdapter.getSqliteDatabase(), currentDate, maxPointsCount, point);
+                  long id =  pointSyncTableDao.insertOrUpdatePoint(offerSqlAdapter.getSqliteDatabase(), currentDate, maxPointsCount, point);
 
                     if (sqlQueryListener != null) {
                         sqlQueryListener.onQuerySuccess(true);
