@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <padding
+        android:bottom="@dimen/_1sdp"
+        android:left="@dimen/_7sdp"
+        android:right="@dimen/_7sdp"
+        android:top="@dimen/_1sdp" />
+
+    <solid android:color="@android:color/white" />
+
+    <stroke
+        android:width="@dimen/_2sdp"
+        android:color="@color/back_nxt_story_counter" />
+
+</shape>

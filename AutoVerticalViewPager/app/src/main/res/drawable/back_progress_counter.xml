@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromDegrees="120"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:toDegrees="140">
+    <item android:id="@android:id/background">
+        <shape
+            android:angle="0"
+            android:innerRadiusRatio="4"
+            android:shape="ring"
+            android:thicknessRatio="6.5"
+            android:type="sweep"
+            android:useLevel="false">
+
+            <stroke
+                android:width="0dp"
+                android:color="@color/back_nxt_story_trans" />
+
+            <solid android:color="@color/back_nxt_story_trans" />
+        </shape>
+
+    </item>
+    <item android:id="@android:id/progress">
+        <rotate
+            android:fromDegrees="270"
+            android:toDegrees="270">
+            <shape
+                android:angle="0"
+                android:innerRadiusRatio="4"
+                android:shape="ring"
+                android:thicknessRatio="6.5"
+                android:type="sweep">
+                <solid android:color="@color/back_nxt_story" />
+            </shape>
+        </rotate>
+    </item>
+</layer-list>

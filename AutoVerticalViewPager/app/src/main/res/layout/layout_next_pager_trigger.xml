@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.android.autopager.view.NextPageTriggerContainer xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nextPageTriggerContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#999999"
+    android:paddingBottom="@dimen/_10sdp"
+    android:visibility="gone"
+    tools:visibility="visible">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2sdp"
+        android:layout_marginTop="-1dp"
+        android:background="#555555" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/fl_thumb"
+            android:layout_width="@dimen/_110sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/iv_image_thumb_next_story"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/ic_launcher_background" />
+
+            <ImageView
+                android:id="@+id/iv_image_thumb_video_ic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_next_page"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <ProgressBar
+                android:id="@+id/counterProgressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="center"
+                android:progressDrawable="@drawable/back_progress_counter"
+                android:visibility="gone"
+                tools:progress="50"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/back_next_page_counter_txt"
+                android:gravity="center"
+                android:textColor="@color/back_nxt_story"
+                android:textSize="@dimen/_15ssp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:text="5"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_cancel_counter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="@dimen/_3sdp"
+                android:background="@drawable/back_nxt_page_cancel_btn"
+                android:gravity="center"
+                android:paddingStart="@dimen/_4sdp"
+                android:paddingTop="@dimen/_2sdp"
+                android:paddingEnd="@dimen/_4sdp"
+                android:paddingBottom="@dimen/_2sdp"
+                android:text="@string/btn_cancel"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_10ssp"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/nxtPageNameTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/_4sdp"
+            android:ellipsize="end"
+            android:lineSpacingExtra="0.9sp"
+            android:maxLines="4"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:text="Next Page Name" />
+    </LinearLayout>
+
+
+</com.android.autopager.view.NextPageTriggerContainer>
