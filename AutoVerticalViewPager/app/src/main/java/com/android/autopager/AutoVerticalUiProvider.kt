@@ -1,5 +1,6 @@
 package com.android.autopager
 
+import android.graphics.Rect
 import android.os.CountDownTimer
 import android.os.Handler
 import android.util.Log
@@ -7,22 +8,30 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.android.MainApp
+import com.android.autopager.callback.AutoVerticalListener
 import com.android.autopager.callback.OnScrollRefreshListener
+import com.android.autopager.model.PagerModel
 import com.android.autopager.view.NestedRefreshView
 import com.android.autopager.view.NextPageTriggerContainer
 
-class AutoVerticalUiProvider(private val mainApp: MainApp, view: View) : BaseProvider(mainApp),View.OnClickListener {
+class AutoVerticalUiProvider(
+    private val mainApp: MainApp,
+    private val autoVerticalListener: AutoVerticalListener?,
+    view: View
+) : BaseProvider(mainApp),
+    View.OnClickListener {
 
     private val nestedRefreshView: NestedRefreshView = view.findViewById(R.id.nestedRefreshView)
-    private val nextStoryHeadingTv: TextView = view.findViewById(R.id.tv_nxt_page_header)
-    private val nextStoryContainer: NextPageTriggerContainer =
+    private val nextPageHeadingTv: TextView = view.findViewById(R.id.tv_nxt_page_header)
+    private val nextPageTriggerContainer: NextPageTriggerContainer =
         view.findViewById(R.id.nextPageTriggerContainer)
     private val counterProgressBar: ProgressBar = view.findViewById(R.id.counterProgressBar)
     private val counterProgressTv: TextView = view.findViewById(R.id.tv_progress)
     private val cancelCounterTv: TextView = view.findViewById(R.id.tv_cancel_counter)
+    private val nextPageNameTv: TextView = view.findViewById(R.id.nxtPageNameTv)
 
     private val bottomMargin = 0
-    private var nextStoryCountDownTimer: NextStoryCountDownTimer? = null
+    private var nextPageCountDownTimer: NextPageCountDownTimer? = null
     private var startProgress = 0
     private val TICK_COUNTS = 5
     private val TICK_INTERVAL_DURATION = 1000
@@ -30,16 +39,16 @@ class AutoVerticalUiProvider(private val mainApp: MainApp, view: View) : BasePro
     /*private var nextStoryLoadingTitle: String? = null
     private var swipeToNextStoryTitle: String? = null*/
     private var isArticleEndTrack = false
-    private val storyTitle = ""
 
-    init {
+    fun initProvider() {
         operateNestedRefreshView()
         scrollHandler = Handler(mainApp.mainLooper)
         cancelCounterTv.setOnClickListener(this)
+        handlerNestedRefreshViewScroll()
     }
 
     private fun operateNestedRefreshView() {
-        nextStoryContainer.detectBottomToTopSwipe(onScrollRefreshListener)
+        nextPageTriggerContainer.detectBottomToTopSwipe(onScrollRefreshListener)
         nestedRefreshView.setScrollDetectionParams(object :
             NestedRefreshView.OnScrollDetectionListener {
             override fun onScrolledToTop() {
@@ -54,31 +63,44 @@ class AutoVerticalUiProvider(private val mainApp: MainApp, view: View) : BasePro
                     TAG, "onScrollChange: NestedScrollView reached to Bottom"
                 )
                 //Toast.makeText(getContext(), "NestedScrollView reached to Bottom", Toast.LENGTH_SHORT).show();
-                startNextStoryCounter()
+                startNextPageCounter()
             }
         }, NestedRefreshView.ScrollDetectDirection.BOTH)
-        nestedRefreshView.setOnScrollEndListener(object : NestedRefreshView.OnScrollEndListener {
-            override fun onScrollEnded() {
-                Log.d(
-                    TAG, "setOnScrollEndListener: onScrollEnded"
-                )
-                // Toast.makeText(getContext(), "setOnScrollEndListener onScrollEnded ENDED", Toast.LENGTH_SHORT).show();
-                handleNextStoryCounterUi()
-            }
-        })
+        nestedRefreshView.setOnScrollEndListener {
+            Log.d(TAG, "setOnScrollEndListener: onScrollEnded")
+            // Toast.makeText(getContext(), "setOnScrollEndListener onScrollEnded ENDED", Toast.LENGTH_SHORT).show();
+            handleNextPageCounterUi()
+        }
         nestedRefreshView.setOnScrollRefreshListener(onScrollRefreshListener)
     }
 
-    private fun handleNextStoryCounterUi() {
+    fun hideNextPageCardView() {
+        nextPageHeadingTv.visibility = View.GONE
+        nextPageTriggerContainer.visibility = View.GONE
+        nextPageTriggerContainer.tag = null
+    }
+
+    /***
+     *
+     * @param pagerModel
+     */
+    fun setNextPageContainer(pagerModel: PagerModel?) {
+        nextPageHeadingTv.visibility = View.VISIBLE
+        nextPageTriggerContainer.visibility = View.VISIBLE
+        nextPageTriggerContainer.tag = pagerModel
+        nextPageNameTv.text = pagerModel?.nextPageName
+    }
+
+    private fun handleNextPageCounterUi() {
         try {
             val isCardVisible: Boolean =
-                isNextStoryCounterUiCompletelyVisible(nextStoryContainer)
+                isNextPageCounterUiCompletelyVisible(nextPageTriggerContainer)
             Log.d(
                 TAG,
-                "handleNextStoryCounterUi() isCardVisible: $isCardVisible"
+                "handleNextPageCounterUi() isCardVisible: $isCardVisible"
             )
             if (!isCardVisible) { //Toast.makeText(dbApplication, "LOADER_STOPPED", Toast.LENGTH_SHORT).show();
-                cancelNextStoryCounter()
+                cancelNextPageCounter()
             }
             if (isCardVisible && !isArticleEndTrack) {
                 isArticleEndTrack = true
@@ -89,62 +111,128 @@ class AutoVerticalUiProvider(private val mainApp: MainApp, view: View) : BasePro
         }
     }
 
-    fun cancelNextStoryCounter() {
+    private fun isNextPageCounterUiCompletelyVisible(nextStoryCv: NextPageTriggerContainer): Boolean {
+        val isNextPageCounterHiddenCompletely: Boolean =
+            isNextPageCounterUiCompletelyHidden(nextStoryCv)
+        Log.d(TAG, "isNextPageCounterHiddenCompletely: $isNextPageCounterHiddenCompletely")
+        return if (!isNextPageCounterHiddenCompletely) {
+            val scrollBounds = Rect()
+            nestedRefreshView.getDrawingRect(scrollBounds)
+            val top: Float = nextStoryCv.y
+            val bottom: Float = top + nextStoryCv.height + bottomMargin
+            Log.d(
+                TAG,
+                "CardVisibility " + "scrollBounds.top : top " + scrollBounds.top + " : " + top
+            )
+            Log.d(
+                TAG,
+                "CardVisibility " + "scrollBounds.bottom : bottom " + scrollBounds.bottom + " : " + bottom
+            )
+            if (scrollBounds.top <= top && scrollBounds.bottom >= bottom) {
+                Log.d(TAG, "CardCompletelyVisible TRUE")
+                true
+            } else {
+                Log.d(TAG, "CardCompletelyVisible FALSE")
+                false
+            }
+        } else {
+            false
+        }
+    }
+
+    private fun isNextPageCounterUiCompletelyHidden(nextStoryCv: NextPageTriggerContainer): Boolean {
+        val scrollBounds = Rect()
+        nestedRefreshView.getHitRect(scrollBounds)
+        return !nextStoryCv.getLocalVisibleRect(scrollBounds)
+    }
+
+    fun cancelNextPageCounter() {
         Log.d(TAG, "cancelNextStoryCounter()")
         startProgress = 0
-        nextStoryCountDownTimer?.cancel()
-        nextStoryCountDownTimer = null
+        nextPageCountDownTimer?.cancel()
+        nextPageCountDownTimer = null
         counterProgressBar.visibility = View.GONE
         counterProgressTv.visibility = View.GONE
         cancelCounterTv.visibility = View.GONE
         counterProgressTv.text = ""
         counterProgressBar.progress = 0
-        nextStoryHeadingTv.text = mainApp.getString(R.string.label_swipe_next_page)
+        nextPageHeadingTv.text = mainApp.getString(R.string.label_swipe_next_page)
     }
 
-    private fun startNextStoryCounter() {
-        if (nextStoryCountDownTimer == null) {
+    private fun startNextPageCounter() {
+        if (nextPageCountDownTimer == null) {
             startProgress = 0
             counterProgressBar.visibility = View.VISIBLE
             counterProgressTv.visibility = View.VISIBLE
             cancelCounterTv.visibility = View.VISIBLE
             counterProgressBar.max = TICK_COUNTS
-            nextStoryCountDownTimer = NextStoryCountDownTimer(
+            nextPageCountDownTimer = NextPageCountDownTimer(
                 (TICK_INTERVAL_DURATION * (TICK_COUNTS + 1)).toLong(),
                 TICK_INTERVAL_DURATION.toLong()
             )
-            nextStoryCountDownTimer!!.start()
-            nextStoryHeadingTv.text = mainApp.getString(R.string.label_load_next_page)
+            nextPageCountDownTimer!!.start()
+            nextPageHeadingTv.text = mainApp.getString(R.string.label_load_next_page)
         }
     }
-
 
     /**
      * @param isAutoSwiped
      */
-    private fun triggerEventToShowNextStory(isAutoSwiped: Boolean) {
+    private fun triggerEventToShowNextPage(isAutoSwiped: Boolean) {
         if (!isPageScrollingLive()) {
-            cancelNextStoryCounter()
-            newsDetailVerticalFragment.onNextStoryCardSwiped(isAutoSwiped)
+            cancelNextPageCounter()
+            autoVerticalListener?.onShowingNextPage(isAutoSwiped)
             handlerNestedRefreshViewScroll()
             applyScrollingToTop()
-            checkWhetherTutorial_2_Shown()
+            /*checkWhetherTutorial_2_Shown()*/
         }
     }
 
+    private fun applyScrollingToTop() {
+        scrollHandler?.postDelayed(
+            nestedScrollingToTopCallback,
+            Util.ANIMATE_SCROLL_DURATION * 2 + 50
+        )
+    }
+
+    private fun handlerNestedRefreshViewScroll() {
+        nestedRefreshView.setScrollingEnabled(false)
+        scrollHandler?.postDelayed(
+            nestedScrollEnableCallback,
+            Util.ANIMATE_SCROLL_DURATION * 2
+        )
+    }
+
+    private fun triggerEventToShowPreviousPage() {
+        cancelNextPageCounter()
+        autoVerticalListener?.onShowingPreviousPage()
+        handlerNestedRefreshViewScroll()
+    }
+
+    private fun isPageScrollingLive(): Boolean {
+        return nestedRefreshView.isScrollingLive
+    }
+
+    private val nestedScrollingToTopCallback = Runnable {
+        nestedRefreshView.fling(0)
+        nestedRefreshView.smoothScrollTo(0, 5)
+    }
+
+    private val nestedScrollEnableCallback =
+        Runnable { nestedRefreshView.setScrollingEnabled(true) }
 
     private val onScrollRefreshListener: OnScrollRefreshListener =
         object : OnScrollRefreshListener {
             override fun onBottomToTopSwiped() {
-                triggerEventToShowNextStory(false)
+                triggerEventToShowNextPage(false)
             }
 
             override fun onTopToBottomSwiped() {
-                triggerEventToShowPreviousStory()
+                triggerEventToShowPreviousPage()
             }
         }
 
-    private inner class NextStoryCountDownTimer
+    private inner class NextPageCountDownTimer
     /**
      * @param millisInFuture    The number of millis in the future from the call
      * to [.start] until the countdown is done and [.onFinish]
@@ -165,7 +253,7 @@ class AutoVerticalUiProvider(private val mainApp: MainApp, view: View) : BasePro
 
         override fun onFinish() {
             try {
-                triggerEventToShowNextStory(true)
+                triggerEventToShowNextPage(true)
             } catch (e: Exception) {
                 e.printStackTrace()
                 Log.e(TAG, "NextStoryCountDownTimer(onFinish)".plus(e.message))
@@ -173,9 +261,19 @@ class AutoVerticalUiProvider(private val mainApp: MainApp, view: View) : BasePro
         }
     }
 
-
     override fun onClick(view: View?) {
-        cancelNextStoryCounter()
+        cancelNextPageCounter()
+    }
+
+    fun onDestroyUiView() {
+        if (nextPageCountDownTimer != null) {
+            nextPageCountDownTimer!!.cancel()
+        }
+        if (scrollHandler != null) {
+            scrollHandler!!.removeCallbacks(nestedScrollingToTopCallback)
+            scrollHandler!!.removeCallbacks(nestedScrollEnableCallback)
+            scrollHandler = null
+        }
     }
 
     companion object {

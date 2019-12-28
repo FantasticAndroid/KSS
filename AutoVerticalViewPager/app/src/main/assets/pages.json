@@ -1,0 +1,36 @@
+[
+  {
+    "id": "1",
+    "page_name": "Gaya",
+    "next_page_name": "Patna"
+  },
+  {
+    "id": "2",
+    "page_name": "Patna",
+    "next_page_name": "Bihar"
+  },
+  {
+    "id": "3",
+    "page_name": "Bihar",
+    "next_page_name": "Bhagalpur"
+  },
+  {
+    "id": "4",
+    "page_name": "Bhagalpur",
+    "next_page_name": "Siwan"
+  },
+  {
+    "id": "5",
+    "page_name": "Siwan",
+    "next_page_name": "Sukma"
+  },
+  {
+    "id": "6",
+    "page_name": "Sukma",
+    "next_page_name": "Ankira"
+  },
+  {
+    "page_name": "Ankira",
+    "next_page_name": ""
+  }
+]
