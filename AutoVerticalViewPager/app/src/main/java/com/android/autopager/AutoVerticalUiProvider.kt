@@ -1,5 +1,6 @@
 package com.android.autopager
 
+import android.content.Context
 import android.graphics.Rect
 import android.os.CountDownTimer
 import android.os.Handler
@@ -15,10 +16,10 @@ import com.android.autopager.view.NestedRefreshView
 import com.android.autopager.view.NextPageTriggerContainer
 
 class AutoVerticalUiProvider(
-    private val mainApp: MainApp,
+    private val mainApp: Context,
     private val autoVerticalListener: AutoVerticalListener?,
     view: View
-) : BaseProvider(mainApp),
+) :
     View.OnClickListener {
 
     private val nestedRefreshView: NestedRefreshView = view.findViewById(R.id.nestedRefreshView)
@@ -266,13 +267,17 @@ class AutoVerticalUiProvider(
     }
 
     fun onDestroyUiView() {
-        if (nextPageCountDownTimer != null) {
-            nextPageCountDownTimer!!.cancel()
-        }
-        if (scrollHandler != null) {
-            scrollHandler!!.removeCallbacks(nestedScrollingToTopCallback)
-            scrollHandler!!.removeCallbacks(nestedScrollEnableCallback)
-            scrollHandler = null
+        try {
+            if (nextPageCountDownTimer != null) {
+                nextPageCountDownTimer!!.cancel()
+            }
+            if (scrollHandler != null) {
+                scrollHandler!!.removeCallbacks(nestedScrollingToTopCallback)
+                scrollHandler!!.removeCallbacks(nestedScrollEnableCallback)
+                scrollHandler = null
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "onDestroyUiView()".plus(e.message))
         }
     }
 
