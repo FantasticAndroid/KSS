@@ -8,18 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.android.autopager.AutoVerticalUiProvider
+import com.android.autopager.PagerBaseFragment
 import com.android.autopager.R
 import com.android.autopager.Util
 import com.android.autopager.callback.AutoVerticalListener
 import com.android.autopager.model.PagerModel
 import kotlinx.android.synthetic.main.fragment_pager.*
 
-class PagerFragment : Fragment() {
+class PagerFragment : PagerBaseFragment() {
 
-    private var autoVerticalUiProvider: AutoVerticalUiProvider? = null
     private var pagerPosition: Int? = 0
-    private var autoVerticalListener: AutoVerticalListener? = null
-    private var appContext: Context? = null
 
     companion object {
         private val TAG = PagerFragment::class.java.simpleName
@@ -39,19 +37,6 @@ class PagerFragment : Fragment() {
         }
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        appContext = context.applicationContext
-    }
-
-    /**
-     *
-     * @param autoVerticalListener AutoVerticalListener
-     */
-    private fun setAutoVerticalListener(autoVerticalListener: AutoVerticalListener) {
-        this.autoVerticalListener = autoVerticalListener
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -65,19 +50,10 @@ class PagerFragment : Fragment() {
         try {
             val pagerModel = arguments?.getSerializable(Util.KEY_PAGE_NAME) as PagerModel
             pagerPosition = arguments?.getInt(Util.KEY_POSITION, 0)
-
             pageNameTv.text = pagerModel.pageName
-
-            autoVerticalUiProvider =
-                AutoVerticalUiProvider(
-                    appContext!!,
-                    autoVerticalListener,
-                    view
-                )
-            autoVerticalUiProvider?.initProvider()
             processNextHeadingOperation(pagerModel)
         } catch (e: Exception) {
-            Log.e(TAG,"onViewCreated()".plus(e.message))
+            Log.e(TAG, "onViewCreated()".plus(e.message))
         }
     }
 
@@ -89,16 +65,7 @@ class PagerFragment : Fragment() {
                 autoVerticalUiProvider?.setNextPageContainer(pagerModel)
             }
         } catch (e: Exception) {
-            Log.e(TAG,"processNextHeadingOperation()".plus(e.message))
+            Log.e(TAG, "processNextHeadingOperation()".plus(e.message))
         }
-    }
-
-    private fun cancelNextStoryCounter() {
-        autoVerticalUiProvider?.cancelNextPageCounter()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        autoVerticalUiProvider?.onDestroyUiView()
     }
 }
