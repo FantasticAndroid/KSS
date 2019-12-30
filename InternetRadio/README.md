@@ -1,7 +1,7 @@
 # Radio Internet
 
 ## What is Radio Internet?
-Radio Internet usages ShoutCast Apis to play Various Radio Channels available on ShoutCast Network. It is basically a demo project illustrate how to develop a basic Radio app in Android using latest Android FrameWork.
+Radio Internet usages ShoutCast Apis to play Various Radio Channels available on ShoutCast Network. It is basically a demo project illustrate how to develop a basic Radio app in Android using latest Android Media FrameWork with ExoPlayer.
 
 ### Libraries integrated-
 Gson 2.8.6 from (https://github.com/google/gson)
