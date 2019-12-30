@@ -37,7 +37,7 @@ import com.android.internetradio.models.FmResponse;
 import com.android.internetradio.models.FmSavedStation;
 import com.android.internetradio.models.FmStation;
 import com.android.internetradio.receivers.NetworkStateReceiver;
-import com.android.internetradio.services.MusicService;
+import com.android.internetradio.services.RadioInternetService;
 import com.android.internetradio.utils.CommonUtils;
 import com.android.internetradio.utils.FmSharedPref;
 import com.android.internetradio.vodyasov.amr.AudiostreamMetadataManager;
@@ -90,7 +90,7 @@ public final class InternetRadioActivity extends CoreActivity implements
         super.onCreate(savedInstanceState);
 
         isPlayerServiceAlreadyRunning = CommonUtils.isMyServiceRunning(this,
-                MusicService.class.getName());
+                RadioInternetService.class.getName());
         Log.d(TAG, "isPlayerServiceAlreadyRunning: " + isPlayerServiceAlreadyRunning);
 
         setContentView(R.layout.activity_player);

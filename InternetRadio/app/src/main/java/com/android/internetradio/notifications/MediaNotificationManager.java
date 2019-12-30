@@ -23,7 +23,7 @@ import androidx.media.session.MediaButtonReceiver;
 
 import com.android.internetradio.R;
 import com.android.internetradio.activities.InternetRadioActivity;
-import com.android.internetradio.services.MusicService;
+import com.android.internetradio.services.RadioInternetService;
 
 /**
  * Keeps track of a notification and updates it automatically for a given MediaSession. This is
@@ -37,7 +37,7 @@ public class MediaNotificationManager {
     private static final String CHANNEL_ID = "com.dainik.bhaskar.carvaan.notifications.channel";
     private static final int REQUEST_CODE = 501;
 
-    private final MusicService mService;
+    private final RadioInternetService mService;
 
     private final NotificationCompat.Action mPlayAction;
     private final NotificationCompat.Action mPauseAction;
@@ -46,7 +46,7 @@ public class MediaNotificationManager {
     /**
      * @param service
      */
-    public MediaNotificationManager(MusicService service) {
+    public MediaNotificationManager(RadioInternetService service) {
         mService = service;
 
         mNotificationManager =
@@ -130,7 +130,8 @@ public class MediaNotificationManager {
                 ///.setColor(ContextCompat.getColor(mService, R.color.white))
 
                 .setSmallIcon(R.drawable.ic_stat_image_audiotrack)
-                //.setSmallIcon(R.drawable.radio_launcher)
+                .setColor(Color.BLACK)
+                .setColorized(true)
 
                 // Pending intent that is fired when user clicks on notification.
                 .setContentIntent(createContentIntent())

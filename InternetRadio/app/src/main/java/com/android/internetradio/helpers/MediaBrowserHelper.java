@@ -31,6 +31,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.media.MediaBrowserServiceCompat;
 
+import com.android.internetradio.services.RadioInternetService;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,7 +124,7 @@ public class MediaBrowserHelper {
 
     /**
      * The internal state of the app needs to revert to what it looks like when it started before
-     * any connections to the {@link com.android.internetradio.services.MusicService} happens via the {@link MediaSessionCompat}.
+     * any connections to the {@link RadioInternetService} happens via the {@link MediaSessionCompat}.
      */
     private void resetState() {
         performOnAllCallbacks(new CallbackCommand() {
@@ -182,7 +184,7 @@ public class MediaBrowserHelper {
     }
 
     // Receives callbacks from the MediaBrowser when it has successfully connected to the
-    // MediaBrowserService (MusicService).
+    // MediaBrowserService (RadioInternetService).
     private class MediaBrowserConnectionCallback extends MediaBrowserCompat.ConnectionCallback {
         // Happens as a result of onStart().
         @Override
@@ -237,7 +239,7 @@ public class MediaBrowserHelper {
             });
         }
 
-        // This might happen if the MusicService is killed while the Activity is in the
+        // This might happen if the RadioInternetService is killed while the Activity is in the
         // foreground and onStart() has been called (but not onStop()).
         @Override
         public void onSessionDestroyed() {

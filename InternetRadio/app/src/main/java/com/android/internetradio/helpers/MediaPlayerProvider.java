@@ -9,7 +9,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import com.android.internetradio.services.MusicService;
+import com.android.internetradio.services.RadioInternetService;
 
 import java.util.List;
 
@@ -45,7 +45,7 @@ public class MediaPlayerProvider {
 
     private class MediaBrowserConnection extends MediaBrowserHelper {
         private MediaBrowserConnection(Context context) {
-            super(context, MusicService.class);
+            super(context, RadioInternetService.class);
         }
 
         @Override

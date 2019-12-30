@@ -19,9 +19,11 @@ package com.android.internetradio.helpers;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 
+import com.android.internetradio.services.RadioInternetService;
+
 /**
  * Listener to provide state updates from {@link com.android.internetradio.adapters.MediaPlayerExoAdapter} (the media player)
- * to {@link com.android.internetradio.services.MusicService} (the service that holds our {@link MediaSessionCompat}.
+ * to {@link RadioInternetService} (the service that holds our {@link MediaSessionCompat}.
  */
 public abstract class PlaybackInfoListener {
 
