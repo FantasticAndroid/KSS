@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                android:src="@drawable/station_bg" />
+                android:src="@drawable/ic_radio_small" />
 
             <ImageView
                 android:id="@+id/ic_play"
@@ -40,7 +40,6 @@
                 android:background="@color/colorPrimary" />
 
             <TextView
-                android:fontFamily="@font/raleway_light"
                 android:id="@+id/tv_fm_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

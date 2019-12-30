@@ -2,200 +2,144 @@
   "data": {
     "FmRadio": [
       {
-        "radio_id": "2648",
+        "radio_id": "1",
         "radio_name": "SunriseFM",
         "radio_url": "http://185.66.249.48:9600/stream",
-        "radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/radio/icons/2018-08/sunrise.png",
-        "radio_category": "Bollywood",
-        "radio_channel": "Hindi",
-        "radio_category_id": "358",
-        "radio_channel_id": "352",
-        "ios_radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/2018-09/sunrise.png",
-        "radio_category_icon": ""
+        "radio_icon": "sunrise.png",
+        "radio_category_id": "1001",
+        "radio_channel_id": "101"
       },
       {
-        "radio_id": "2677",
+        "radio_id": "2",
         "radio_name": "Radio Afsana",
         "radio_url": "http://174.36.206.197:7019/stream",
-        "radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/radio/icons/2018-08/afsana_radio.png",
-        "radio_category": "Bollywood",
-        "radio_channel": "Hindi",
-        "radio_category_id": "358",
-        "radio_channel_id": "352",
-        "ios_radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/2018-09/afsana_1.png",
-        "radio_category_icon": ""
+        "radio_icon": "afsana_radio.png",
+        "radio_category_id": "1001",
+        "radio_channel_id": "101"
       },
       {
-        "radio_id": "2686",
+        "radio_id": "3",
         "radio_name": "Masala Radio",
         "radio_url": "http://s9.voscast.com:7354",
-        "radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/radio/icons/2018-08/masala.png",
-        "radio_category": "Bollywood",
-        "radio_channel": "Hindi",
-        "radio_category_id": "358",
-        "radio_channel_id": "352",
-        "ios_radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/2018-09/masala.png",
-        "radio_category_icon": ""
+        "radio_icon": "masala.png",
+        "radio_category_id": "1001",
+        "radio_channel_id": "101"
       },
       {
-        "radio_id": "2688",
+        "radio_id": "4",
         "radio_name": "Radio Hindi International",
         "radio_url": "http://188.166.176.244:8012/stream",
-        "radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/2018-07/radio_image_38.png",
-        "radio_category": "Top Radio",
-        "radio_channel": "Hindi",
-        "radio_category_id": "436",
-        "radio_channel_id": "352",
-        "ios_radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/2018-09/radio-international_0.png",
-        "radio_category_icon": ""
+        "radio_icon": "radio_image_38.png",
+        "radio_category_id": "1004",
+        "radio_channel_id": "101"
       },
       {
-        "radio_id": "2697",
+        "radio_id": "5",
         "radio_name": "Desi Music Mix!",
         "radio_url": "http://50.7.68.251:7064/stream",
-        "radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/radio/icons/2018-08/desi_music_mix_0.png",
-        "radio_category": "Bollywood",
-        "radio_channel": "Hindi",
-        "radio_category_id": "358",
-        "radio_channel_id": "352",
-        "ios_radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/2018-09/desi_music_0.png",
-        "radio_category_icon": ""
+        "radio_icon": "desi_music_mix_0.png",
+        "radio_category_id": "1001",
+        "radio_channel_id": "101"
       },
       {
-        "radio_id": "543804",
+        "radio_id": "6",
         "radio_name": "Hindi Desi Bollywood Evergreen Hits New",
         "radio_url": "http://192.240.102.133:11454/stream",
-        "radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/radio/icons/2018-09/hindi_desi_bollywood_evergreen_hits_new_0.png",
-        "radio_category": "Top Radio",
-        "radio_channel": "Hindi",
-        "radio_category_id": "436",
-        "radio_channel_id": "352",
-        "ios_radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/2018-09/bollywood_bio_0.png",
-        "radio_category_icon": ""
+        "radio_icon": "hits_new_0.png",
+        "radio_category_id": "1004",
+        "radio_channel_id": "101"
       },
       {
-        "radio_id": "546111",
+        "radio_id": "7",
         "radio_name": "Radio HSL - India&amp;#039;s No.1 - Top 40 Superhits Station",
         "radio_url": "http://50.7.68.251:7064/stream",
-        "radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/radio/icons/2018-09/radio_hsl.png",
-        "radio_category": "Top Radio",
-        "radio_channel": "Hindi",
-        "radio_category_id": "436",
-        "radio_channel_id": "352",
-        "ios_radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/2018-09/hsl.png",
-        "radio_category_icon": ""
+        "radio_icon": "radio_hsl.png",
+        "radio_category_id": "1004",
+        "radio_channel_id": "101"
       },
       {
-        "radio_id": "546181",
+        "radio_id": "8",
         "radio_name": "Taal Radio",
         "radio_url": "http://192.151.153.234:9998/taal",
-        "radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/radio/icons/2018-09/taal.png",
-        "radio_category": "Top Radio",
-        "radio_channel": "Hindi",
-        "radio_category_id": "436",
-        "radio_channel_id": "352",
-        "ios_radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/2018-09/taal_1.png",
-        "radio_category_icon": ""
+        "radio_icon": "taal.png",
+              "radio_category_id": "1004",
+        "radio_channel_id": "101"
       },
       {
-        "radio_id": "546281",
+        "radio_id": "9",
         "radio_name": "VirtualDJ Radio PowerBase",
         "radio_url": "http://52.0.120.216:8000/channel4.mp3",
         "radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/radio/icons/2018-09/radiover7.png",
-        "radio_category": "Dance",
-        "radio_channel": "English",
-        "radio_category_id": "368",
-        "radio_channel_id": "353",
-        "ios_radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/2018-09/virtual_dj.png",
-        "radio_category_icon": ""
+        "radio_category_id": "1003",
+        "radio_channel_id": "102"
       },
       {
-        "radio_id": "546307",
+        "radio_id": "10",
         "radio_name": "Heart Hits",
         "radio_url": "http://78.31.65.20:8880/heart.mp3",
-        "radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/radio/icons/2018-09/picassent.png",
-        "radio_category": "Pop",
-        "radio_channel": "English",
-        "radio_category_id": "364",
-        "radio_channel_id": "353",
-        "ios_radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/2018-09/heart-hits.png",
-        "radio_category_icon": ""
+        "radio_icon": "picassent.png",
+        "radio_category_id": "1002",
+        "radio_channel_id": "102"
       },
       {
-        "radio_id": "563504",
+        "radio_id": "11",
         "radio_name": "xxxRock.fm",
         "radio_url": "http://23.29.71.154:8140/stream",
-        "radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/radio/icons/2018-09/radiover14_0.png",
-        "radio_category": "Pop",
-        "radio_channel": "English",
-        "radio_category_id": "364",
-        "radio_channel_id": "353",
-        "ios_radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/2018-09/xxxrock.png",
-        "radio_category_icon": ""
+        "radio_icon": "radiover14_0.png",
+        "radio_category_id": "1002",
+        "radio_channel_id": "102"
       },
       {
-        "radio_id": "563520",
+        "radio_id": "12",
         "radio_name": "Pulse Trance",
         "radio_url": "http://51.15.76.3/pulstranceHD.mp3",
-        "radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/radio/icons/2018-09/radiover12.png",
-        "radio_category": "Dance",
-        "radio_channel": "English",
-        "radio_category_id": "368",
-        "radio_channel_id": "353",
-        "ios_radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/2018-09/pulse-trance.png",
-        "radio_category_icon": ""
+        "radio_icon": "radiover12.png",
+        "radio_category_id": "1003",
+        "radio_channel_id": "102"
       },
       {
-        "radio_id": "563541",
+        "radio_id": "13",
         "radio_name": "Dance Wave!",
         "radio_url": "http://78.31.65.20:8080/",
-        "radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/radio/icons/2018-09/radiover6_0.png",
-        "radio_category": "Dance",
-        "radio_channel": "English",
-        "radio_category_id": "368",
-        "radio_channel_id": "353",
-        "ios_radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/2018-09/dance-wave.png",
-        "radio_category_icon": ""
+        "radio_icon": "radiover6_0.png",
+        "radio_category_id": "1003",
+        "radio_channel_id": "102"
       }
     ],
     "radio_channels": [
       {
         "radio_channel_name": "Hindi",
-        "radio_channel_id": "352"
+        "radio_channel_id": "101"
       },
       {
         "radio_channel_name": "English",
-        "radio_channel_id": "353"
+        "radio_channel_id": "102"
       }
     ],
     "radio_category": [
       {
         "radio_category_name": "Bollywood",
-        "radio_category_id": "358",
-        "radio_channel_id": "352",
-        "radio_category_icon": ""
+        "radio_category_id": "1001",
+        "radio_channel_id": "101"
       },
       {
         "radio_category_name": "Pop",
-        "radio_category_id": "364",
-        "radio_channel_id": "353",
-        "radio_category_icon": ""
+        "radio_category_id": "1002",
+        "radio_channel_id": "102"
       },
       {
         "radio_category_name": "Dance",
-        "radio_category_id": "368",
-        "radio_channel_id": "353",
-        "radio_category_icon": ""
+        "radio_category_id": "1003",
+        "radio_channel_id": "102"
       },
       {
         "radio_category_name": "Top Radio",
-        "radio_category_id": "436",
-        "radio_channel_id": "352",
-        "radio_category_icon": ""
+        "radio_category_id": "1004",
+        "radio_channel_id": "101"
       }
     ]
   },
   "code": 200,
-  "message": "Success",
-  "time": 1577558026
+  "message": "Ok",
+  "time": 0
 }

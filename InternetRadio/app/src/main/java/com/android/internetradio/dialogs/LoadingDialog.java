@@ -10,13 +10,13 @@ import androidx.annotation.NonNull;
 
 import com.android.internetradio.R;
 
-public final class TransAviMsgLoader extends Dialog {
+public final class LoadingDialog extends Dialog {
 
     /**
      * cancelable is false by default
      * @param context
      */
-    public TransAviMsgLoader(@NonNull Activity context) {
+    public LoadingDialog(@NonNull Activity context) {
         super(context, R.style.TransLoader);
         setCancelable(false);
     }
@@ -25,7 +25,7 @@ public final class TransAviMsgLoader extends Dialog {
      * @param context
      * @param isCancelable default is false
      */
-    public TransAviMsgLoader(@NonNull Activity context, boolean isCancelable) {
+    public LoadingDialog(@NonNull Activity context, boolean isCancelable) {
         super(context, R.style.TransLoader);
         setCancelable(isCancelable);
     }

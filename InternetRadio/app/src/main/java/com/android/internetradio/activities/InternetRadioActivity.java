@@ -27,7 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.internetradio.R;
 import com.android.internetradio.adapters.CategoryFmsRvAdapter;
 import com.android.internetradio.angmarch.views.NiceSpinner;
-import com.android.internetradio.dialogs.TransAviMsgLoader;
+import com.android.internetradio.dialogs.LoadingDialog;
 import com.android.internetradio.helpers.FMMetaDataProvider;
 import com.android.internetradio.helpers.MediaPlayerProvider;
 import com.android.internetradio.models.FmCategory;
@@ -49,7 +49,6 @@ import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public final class InternetRadioActivity extends CoreActivity implements
         MediaPlayerProvider.OnUIInteractionListener,
@@ -96,8 +95,8 @@ public final class InternetRadioActivity extends CoreActivity implements
 
         setContentView(R.layout.activity_player);
         glideOptions = new RequestOptions()
-                .placeholder(R.drawable.station_bg)
-                .error(R.drawable.station_bg);
+                .placeholder(R.drawable.ic_radio)
+                .error(R.drawable.ic_radio);
                 /*.diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .priority(Priority.HIGH);*/
 
@@ -109,15 +108,16 @@ public final class InternetRadioActivity extends CoreActivity implements
         setSupportActionBar(toolbar);
         // Get a support ActionBar corresponding to this toolbar
         ActionBar actionBar = getSupportActionBar();
-        // Enable the Up button
-        Objects.requireNonNull(actionBar).setDisplayHomeAsUpEnabled(true);
+
+        /*// Enable the Up button
+        Objects.requireNonNull(actionBar).setDisplayHomeAsUpEnabled(true);*/
 
         initUI();
 
     }
 
-    private TransAviMsgLoader showTransLoader() {
-        TransAviMsgLoader transLoader = new TransAviMsgLoader(this);
+    private LoadingDialog showTransLoader() {
+        LoadingDialog transLoader = new LoadingDialog(this);
         transLoader.show();
         return transLoader;
     }
@@ -379,7 +379,7 @@ public final class InternetRadioActivity extends CoreActivity implements
         }
     }
 
-    private TransAviMsgLoader playFmStationTransLoader;
+    private LoadingDialog playFmStationTransLoader;
 
     /**
      * Play FM Station from AnyWhere

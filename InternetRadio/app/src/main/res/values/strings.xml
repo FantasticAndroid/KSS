@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Internet Radio</string>
+    <string name="app_name">Radio Internet</string>
     <string name="label_stations">Stations</string>
     <string name="label_pause">Pause</string>
     <string name="label_play">Play</string>

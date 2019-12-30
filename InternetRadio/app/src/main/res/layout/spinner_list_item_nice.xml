@@ -7,12 +7,11 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:ellipsize="marquee"
-    android:fontFamily="@font/raleway_light"
     android:gravity="center_vertical"
-    android:paddingLeft="@dimen/three_grid_unit"
+    android:paddingStart="@dimen/three_grid_unit"
     android:paddingTop="@dimen/one_and_a_half_grid_unit"
     android:paddingBottom="@dimen/one_and_a_half_grid_unit"
     android:singleLine="true"
     android:textSize="@dimen/spinner_text_size"
     tools:text="Item"
-    tools:textColor="@android:color/black" />
+    tools:textColor="@color/white" />

@@ -160,7 +160,7 @@ public class MediaNotificationManager {
      */
     public Bitmap getAlbumBitmap(Context context) {
         return BitmapFactory.decodeResource(context.getResources(),
-                R.drawable.radio_launcher_big);
+                R.drawable.ic_stat_image_audiotrack);
     }
 
     // Does nothing on versions of Android earlier than O.

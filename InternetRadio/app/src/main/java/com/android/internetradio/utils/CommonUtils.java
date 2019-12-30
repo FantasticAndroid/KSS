@@ -23,6 +23,8 @@ import java.util.Random;
 
 public class CommonUtils {
 
+    private static final String TAG = CommonUtils.class.getSimpleName();
+
     /**
      * Checks if is my service running.
      *
@@ -104,7 +106,7 @@ public class CommonUtils {
             inputStream.read(buffer);
             inputStream.close();
             json = new String(buffer, "UTF-8");
-            Log.d("JSON", "Read JSON from file: " + json);
+            ////Log.d("JSON", "Read JSON from file: " + json);
         } catch (Exception e) {
             Log.e("readJSON", "readJSON: " + e.getMessage());
         }
@@ -124,7 +126,7 @@ public class CommonUtils {
                 query_pairs.put(URLDecoder.decode(pair.substring(0, idx), "UTF-8"), URLDecoder.decode(pair.substring(idx + 1), "UTF-8"));
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "getIdenticalQueryParameters() " + e.getMessage());
         }
         return query_pairs;
     }

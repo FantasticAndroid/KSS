@@ -35,8 +35,8 @@ public class CategoryFmsRvAdapter extends RecyclerView.Adapter<CategoryFmsRvAdap
         this.fmStationList = fmStationList;
         inflater = LayoutInflater.from(playerActivity);
         glideRequestManager = Glide.with(playerActivity);
-        glideOptions = RequestOptions.fitCenterTransform().placeholder(R.drawable.station_bg_small)
-                .error(R.drawable.station_bg_small);
+        glideOptions = RequestOptions.fitCenterTransform().placeholder(R.drawable.ic_radio_small)
+                .error(R.drawable.ic_radio_small);
     }
 
     @NonNull

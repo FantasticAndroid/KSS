@@ -47,17 +47,6 @@
 
     </FrameLayout>
 
-    <!--<ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="5dp"
-        android:background="@drawable/rounded_rectangle_white"
-        android:padding="2dp"
-        android:src="@drawable/shoutcast"
-        android:visibility="visible" />-->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,7 +56,6 @@
         android:orientation="vertical">
 
         <TextView
-            android:fontFamily="@font/raleway_light"
             android:id="@+id/tv_title_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,7 +69,6 @@
             tools:text="Title name" />
 
         <TextView
-            android:fontFamily="@font/raleway_light"
             android:id="@+id/tv_artist_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -96,7 +83,6 @@
             tools:text="Artist name" />
 
         <TextView
-            android:fontFamily="@font/raleway_light"
             android:id="@+id/tv_album_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
