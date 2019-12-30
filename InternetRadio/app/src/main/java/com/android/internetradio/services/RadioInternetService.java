@@ -29,9 +29,9 @@ import com.android.internetradio.utils.FmSharedPref;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class MusicService extends MediaBrowserServiceCompat {
+public final class RadioInternetService extends MediaBrowserServiceCompat {
 
-    private static final String TAG = MusicService.class.getSimpleName();
+    private static final String TAG = RadioInternetService.class.getSimpleName();
 
     private MediaSessionCompat mSession;
     private PlayerAdapter mPlayback;
@@ -58,7 +58,7 @@ public final class MusicService extends MediaBrowserServiceCompat {
         transportControls = mSession.getController().getTransportControls();
 
         mPlayback = new MediaPlayerExoAdapter(this, new MediaPlayerListener());
-        Log.d(TAG, "onCreate: MusicService creating MediaSession, and MediaNotificationManager");
+        Log.d(TAG, "onCreate: RadioInternetService creating MediaSession, and MediaNotificationManager");
     }
 
     @Override
@@ -150,9 +150,9 @@ public final class MusicService extends MediaBrowserServiceCompat {
         private MediaMetadataCompat mPreparedMedia;
 
         MediaSessionCallback() {
-            FmSavedStation fmStation = new FmSharedPref(MusicService.this.getApplicationContext()).getCurrentStation();
+            FmSavedStation fmStation = new FmSharedPref(RadioInternetService.this.getApplicationContext()).getCurrentStation();
             if (null != fmStation) {
-                // mPreparedMedia = MusicLibrary.getMetadata(MusicService.this, mediaId);
+                // mPreparedMedia = MusicLibrary.getMetadata(RadioInternetService.this, mediaId);
                 mPreparedMedia = createMediaMetadataCompat(fmStation);
             }
         }
@@ -167,7 +167,7 @@ public final class MusicService extends MediaBrowserServiceCompat {
 
         @Override
         public void onPrepare() {
-            FmSavedStation fmStation = new FmSharedPref(MusicService.this.getApplicationContext()).getCurrentStation();
+            FmSavedStation fmStation = new FmSharedPref(RadioInternetService.this.getApplicationContext()).getCurrentStation();
             if (null != fmStation) {
                 mPreparedMedia = createMediaMetadataCompat(fmStation);
                 mSession.setMetadata(mPreparedMedia);
@@ -225,7 +225,7 @@ public final class MusicService extends MediaBrowserServiceCompat {
         }
     }
 
-    // PlayerAdapter Callback: PlayerAdapter state -> MusicService.
+    // PlayerAdapter Callback: PlayerAdapter state -> RadioInternetService.
     public class MediaPlayerListener extends PlaybackInfoListener {
 
         private final ServiceManager mServiceManager;
@@ -262,8 +262,8 @@ public final class MusicService extends MediaBrowserServiceCompat {
 
                 if (!mServiceInStartedState) {
                     ContextCompat.startForegroundService(
-                            MusicService.this,
-                            new Intent(MusicService.this, MusicService.class));
+                            RadioInternetService.this,
+                            new Intent(RadioInternetService.this, RadioInternetService.class));
                     mServiceInStartedState = true;
                 }
 
@@ -316,7 +316,7 @@ public final class MusicService extends MediaBrowserServiceCompat {
      * @param context
      */
     public static void playTrack(@NonNull Context context) {
-        Intent intent = new Intent(FmConstants.ACTION_PLAY_TRACKS, null, context, MusicService.class);
+        Intent intent = new Intent(FmConstants.ACTION_PLAY_TRACKS, null, context, RadioInternetService.class);
         context.startService(intent);
     }
 
@@ -325,7 +325,7 @@ public final class MusicService extends MediaBrowserServiceCompat {
      * @param context
      */
     public static void stopTrack(@NonNull Context context) {
-        Intent intent = new Intent(FmConstants.ACTION_STOP_TRACKS, null, context, MusicService.class);
+        Intent intent = new Intent(FmConstants.ACTION_STOP_TRACKS, null, context, RadioInternetService.class);
         context.startService(intent);
     }
 
@@ -334,7 +334,7 @@ public final class MusicService extends MediaBrowserServiceCompat {
      * @param context
      */
     public static void pauseTrack(@NonNull Context context) {
-        Intent intent = new Intent(FmConstants.ACTION_PAUSE_TRACKS, null, context, MusicService.class);
+        Intent intent = new Intent(FmConstants.ACTION_PAUSE_TRACKS, null, context, RadioInternetService.class);
         context.startService(intent);
     }
 }
