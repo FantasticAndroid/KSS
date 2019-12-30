@@ -10,5 +10,5 @@ Glide 4.10.0 (https://github.com/bumptech/glide)
 Ssp and Sdp 1.0.6 (https://github.com/intuit/ssp) (https://github.com/intuit/sdp)
 Androidx Media 1.1.0
 
-#### Screens- Video
-![Video](https://github.com/FantasticAndroid/KSS/blob/master/InternetRadio/video.gif)
+#### Screenshots-
+![video](https://github.com/FantasticAndroid/KSS/blob/master/InternetRadio/video.gif)
