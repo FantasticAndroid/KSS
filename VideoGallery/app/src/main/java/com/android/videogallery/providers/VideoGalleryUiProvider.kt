@@ -1,6 +1,7 @@
 package com.android.videogallery.providers
 
 import android.content.pm.ActivityInfo
+import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Bundle
@@ -12,15 +13,18 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.videogallery.R
 import com.android.videogallery.Utils
 import com.android.videogallery.activities.CoreActivity
+import com.android.videogallery.activities.VideoGalleryActivity
 import com.android.videogallery.adapters.RecyclerAdapter
 import com.android.videogallery.callbacks.ExoVideoPlayerInterface
 import com.android.videogallery.models.VideoGallery
@@ -42,8 +46,8 @@ class VideoGalleryUiProvider(
 
     private val videoLayout: FrameLayout? = view.findViewById(R.id.fl_video_layout)
 
-    /*private val shareVideoGalleryIv: ImageView? =
-        view.findViewById(R.id.iv_video_gallery_detail_share)*/
+    private val layoutIv: ImageView? =
+        view.findViewById(R.id.layoutIv)
 
     private val slugTitleTv: TextView? = view.findViewById(R.id.tv_video_slug_title)
 
@@ -80,12 +84,15 @@ class VideoGalleryUiProvider(
 
     fun initUi(
         layoutType: Utils.LayoutType,
+        currentColorCode: Int,
         isScreenOrientationLocked: Boolean,
         savedInstanceState: Bundle?
     ) {
+        this.currentColorCode = currentColorCode
         this.layoutType = layoutType
         this.isScreenOrientationLocked = isScreenOrientationLocked
         viewMoreLessTv?.setOnClickListener(this)
+        layoutIv?.setOnClickListener(this)
         exoVideoGalleryContainer?.setBackgroundColor(
             ContextCompat.getColor(videoApp, R.color.back_theme_light)
         )
@@ -135,6 +142,7 @@ class VideoGalleryUiProvider(
         for (videoGallery in videoGalleryList) {
 
             val videoGalleryListItem = VideoGalleryListItem(
+                currentColorCode,
                 layoutType, deviceWidth,
                 onVideoGalleryListItemClickListener
             )
@@ -239,13 +247,13 @@ class VideoGalleryUiProvider(
             }
             descTv.visibility = View.GONE
             viewMoreLessTv.isSelected = false
-            /*try {
+            try {
                 ImageViewCompat.setImageTintList(
-                    shareVideoGalleryIv!!,
+                    layoutIv!!,
                     ColorStateList.valueOf(currentColorCode)
                 )
             } catch (e: java.lang.Exception) {
-            }*/
+            }
             viewMoreLessTv.text =
                 Html.fromHtml("<U>" + videoApp.getString(R.string.label_aur_paden) + "</U>")
             viewMoreLessTv.setCompoundDrawablesRelativeWithIntrinsicBounds(
@@ -256,7 +264,6 @@ class VideoGalleryUiProvider(
             )
         }
     }
-
 
     fun clearAdapter() {
         recyclerAdapter?.clearAndRemove()
@@ -346,23 +353,25 @@ class VideoGalleryUiProvider(
         videoGalleryList.remove(selectedVideoGallery)
         recyclerAdapter?.removeItem(selectedVideoGalleryListItem)
         if (videoGalleryList.indexOf(currentVideoGallery) == -1) {
-            videoGalleryList.add(currentVideoGallery!!)
+            videoGalleryList.add(currentVideoGallery)
             val videoGalleryListItem =
-                VideoGalleryListItem(layoutType, deviceWidth, onVideoGalleryListItemClickListener)
-            videoGalleryListItem.setData(currentVideoGallery)
+                VideoGalleryListItem(
+                    currentColorCode,
+                    layoutType,
+                    deviceWidth,
+                    onVideoGalleryListItemClickListener
+                )
+            videoGalleryListItem.data = currentVideoGallery
 
             recyclerAdapter?.add(videoGalleryListItem)
         }
         currentVideoGallery = selectedVideoGallery
         setVideoDetailOnDetailView()
-        if (null != currentVideoGallery) {
-            playVideoInExoPlayer(currentVideoGallery?.videoUrl!!)
-            try {
-                nestedScrollView!!.post { nestedScrollView?.scrollTo(0, 0) }
-            } catch (e: java.lang.Exception) {
-                Log.e(TAG, "nestedScrollView.post: " + e.message)
-            }
-            ////implementCatColorOnUI(currentVideoGallery.getCatId())
+        playVideoInExoPlayer(currentVideoGallery.videoUrl!!)
+        try {
+            nestedScrollView!!.post { nestedScrollView.scrollTo(0, 0) }
+        } catch (e: java.lang.Exception) {
+            Log.e(TAG, "nestedScrollView.post: " + e.message)
         }
     }
 
@@ -452,6 +461,11 @@ class VideoGalleryUiProvider(
 
     override fun onClick(view: View) {
         when (view.id) {
+            R.id.layoutIv -> {
+
+
+            }
+
             R.id.tv_view_desc_more_less -> {
                 if (view.isSelected) {
                     descTv!!.visibility = View.GONE

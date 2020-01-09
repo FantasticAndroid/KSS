@@ -44,16 +44,15 @@
             android:textColor="@color/colorPrimary"
             tools:text="@string/label_aur_paden" />
 
-        <!--<ImageView
-            android:id="@+id/iv_video_gallery_detail_share"
+        <ImageView
+            android:id="@+id/layoutIv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:paddingStart="@dimen/_20sdp"
             android:paddingEnd="@dimen/_5sdp"
-
-            tools:src="@drawable/ic_share" />-->
+            android:src="@android:drawable/ic_menu_agenda" />
     </RelativeLayout>
 
     <TextView

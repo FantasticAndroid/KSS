@@ -27,6 +27,7 @@ public final class VideoGalleryListItem extends AdapterItem<VideoGalleryListItem
     private Utils.LayoutType layoutType;
     private static final String TAG = VideoGalleryListItem.class.getSimpleName();
     private int thumbWidth;
+    private int colorCode;
 
     /***
      *
@@ -34,8 +35,9 @@ public final class VideoGalleryListItem extends AdapterItem<VideoGalleryListItem
      * @param thumbWidth
      * @param onVideoGalleryListItemClickListener
      */
-    public VideoGalleryListItem(@NonNull Utils.LayoutType layoutType, int thumbWidth,
+    public VideoGalleryListItem(@NonNull int colorCode, @NonNull Utils.LayoutType layoutType, int thumbWidth,
                                 @NonNull VideoGalleryUiProvider.OnVideoGalleryListItemClickListener onVideoGalleryListItemClickListener) {
+        this.colorCode = colorCode;
         this.layoutType = layoutType;
         this.thumbWidth = thumbWidth;
         this.onVideoGalleryListItemClickListener = onVideoGalleryListItemClickListener;
@@ -65,7 +67,7 @@ public final class VideoGalleryListItem extends AdapterItem<VideoGalleryListItem
 
     @Override
     protected void bindData(Holder holder, Object data, int position) {
-        holder.setData(videoGallery, layoutType, thumbWidth);
+        holder.setData(colorCode, videoGallery, layoutType, thumbWidth);
         holder.itemView.setOnClickListener(clickListener);
     }
 
@@ -103,7 +105,7 @@ public final class VideoGalleryListItem extends AdapterItem<VideoGalleryListItem
             playDurationParentLayout = view.findViewById(R.id.ll_play_duration);
         }
 
-        public void setData(VideoGallery videoGallery, Utils.LayoutType layoutType, int thumbWidth) {
+        public void setData(int colorCode, VideoGallery videoGallery, Utils.LayoutType layoutType, int thumbWidth) {
             try {
                 if (videoGallery == null) return;
                 setSlugTitle(videoGallery);
@@ -111,10 +113,10 @@ public final class VideoGalleryListItem extends AdapterItem<VideoGalleryListItem
 
                 try {
                     if (layoutType == Utils.LayoutType.VIDEO_GALLERY_RVL) {
-                        ImageViewCompat.setImageTintList(playIconIv, ColorStateList.valueOf(videoGallery.getCatColorCode()));
+                        ImageViewCompat.setImageTintList(playIconIv, ColorStateList.valueOf(colorCode));
                     } else if (layoutType == Utils.LayoutType.VIDEO_GALLERY_RVG ||
                             layoutType == Utils.LayoutType.VIDEO_GALLERY_RVH && playDurationParentLayout != null) {
-                        playDurationParentLayout.setBackgroundColor(videoGallery.getCatColorCode());
+                        playDurationParentLayout.setBackgroundColor(colorCode);
                     }
                 } catch (Exception e) {
 

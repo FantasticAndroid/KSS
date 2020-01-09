@@ -3,6 +3,7 @@ package com.android.videogallery.activities
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Bundle
 import android.view.KeyEvent
 import com.android.videogallery.R
@@ -22,11 +23,25 @@ class VideoGalleryActivity : CoreActivity() {
         setContentView(view)
 
         videoGalleryUiProvider = VideoGalleryUiProvider(view, this)
-        videoGalleryUiProvider!!.initUi(
-            Utils.LayoutType.VIDEO_GALLERY_RVL,
-            false,
-            savedInstanceState
-        )
+
+        val bundle = intent.extras
+        bundle?.let {
+            videoGalleryUiProvider!!.initUi(
+                bundle.getSerializable(Utils.KEY_GALLERY_LAYOUT_TYPE) as Utils.LayoutType,
+                bundle.getInt(Utils.KEY_GALLERY_LAYOUT_COLOR),
+                false,
+                savedInstanceState
+            )
+
+        }?:run {
+            videoGalleryUiProvider!!.initUi(
+                Utils.LayoutType.VIDEO_GALLERY_RVL,
+                Color.CYAN,
+                false,
+                savedInstanceState
+            )
+        }
+
         exoVideoPlayerProvider = videoGalleryUiProvider!!.getExoVideoPlayerProvider()
     }
 

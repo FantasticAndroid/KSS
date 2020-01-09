@@ -23,6 +23,9 @@ class Utils {
         var KEY_VIDEO_DURATION = "key_video_duration"
         val KEY_IS_SCREEN_ORIENTATION_LOCKED = "key_screen_orientation_locked"
 
+        val KEY_GALLERY_LAYOUT_TYPE = "key_gallery_layout_type"
+        val KEY_GALLERY_LAYOUT_COLOR = "key_gallery_layout_color"
+
         /**
          * This method will be used to read json from file
          *
