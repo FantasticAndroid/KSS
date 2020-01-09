@@ -41,7 +41,7 @@ class ExoVideoPlayerActivity : CoreActivity() {
                 bundle.getInt(Utils.KEY_VIDEO_DURATION, 0)
             exoVideoPlayerProvider = ExoVideoPlayerProvider(view, this, exoVideoPlayerInterface)
             exoVideoPlayerProvider!!.initExoPlayerUI(Color.MAGENTA, videoDuration)
-            exoVideoPlayerProvider!!.onActivityCreate(videoUrlActual!!, "VideoTitle")
+            exoVideoPlayerProvider!!.onActivityCreate(videoUrlActual!!)
             exoVideoPlayerProvider!!.onActivityCreated(savedInstanceState)
             exoVideoPlayerProvider!!.setPlayBackPosition(true, playbackPosition)
         }

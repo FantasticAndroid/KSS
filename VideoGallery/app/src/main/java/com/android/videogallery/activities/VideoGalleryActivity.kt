@@ -100,16 +100,18 @@ class VideoGalleryActivity : CoreActivity() {
         videoGalleryUiProvider?.clearAdapter()
     }
 
-    /**
-     * @param context
-     * @param bundle
-     */
-    fun startExoVideoGalleryActivity(context: Activity, bundle: Bundle?) {
-        val intent =
-            Intent(context, VideoGalleryActivity::class.java)
-        if (bundle != null) {
-            intent.putExtras(bundle)
+    companion object{
+        /**
+         * @param context
+         * @param bundle
+         */
+        fun startExoVideoGalleryActivity(context: Activity, bundle: Bundle?) {
+            val intent =
+                Intent(context, VideoGalleryActivity::class.java)
+            if (bundle != null) {
+                intent.putExtras(bundle)
+            }
+            context.startActivity(intent)
         }
-        context.startActivity(intent)
     }
 }

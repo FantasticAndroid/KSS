@@ -12,10 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.core.util.Pair;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.videogallery.viewitems.VideoGalleryListItem;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -69,11 +65,15 @@ public final class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapterV
      * @return {@link RecyclerAdapter}
      */
     public RecyclerAdapter add(AdapterItem item) {
-        registerItemType(item);
-        getItems().add(item);
-        removeEmptyItemIfItHasBeenConfigured();
+        try {
+            registerItemType(item);
+            getItems().add(item);
+            removeEmptyItemIfItHasBeenConfigured();
 
-        notifyItemInserted(getItems().size() - 1);
+            notifyItemInserted(getItems().size() - 1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return this;
     }
 

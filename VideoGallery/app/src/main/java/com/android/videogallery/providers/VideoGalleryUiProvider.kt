@@ -1,7 +1,6 @@
 package com.android.videogallery.providers
 
 import android.content.pm.ActivityInfo
-import android.content.res.ColorStateList
 import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Bundle
@@ -13,18 +12,15 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.widget.ImageViewCompat
 import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.videogallery.R
 import com.android.videogallery.Utils
 import com.android.videogallery.activities.CoreActivity
-import com.android.videogallery.adapters.AdapterItem
 import com.android.videogallery.adapters.RecyclerAdapter
 import com.android.videogallery.callbacks.ExoVideoPlayerInterface
 import com.android.videogallery.models.VideoGallery
@@ -68,10 +64,6 @@ class VideoGalleryUiProvider(
     private var recyclerAdapter: RecyclerAdapter? = null
     private var videoLayoutParams: LinearLayout.LayoutParams? = null
 
-    private val NO_OF_ITEMS_PER_PAGE = 10
-    private var paginationOffset = 0
-    private var isPaginationEnabled = false
-    private var isLoadMoreEnabled = false
     private var isScreenOrientationLocked: Boolean = false
 
     private var videoGalleryWeightSum = 0
@@ -80,8 +72,9 @@ class VideoGalleryUiProvider(
     private var exoVideoPlayerProvider: ExoVideoPlayerProvider? = null
     private var galleryRvLayoutManager: GridLayoutManager? = null
     private val TAG: String = VideoGalleryUiProvider::class.java.simpleName
-    private val orientationHandler: Handler? = null
-    private var currentColorCode = 0
+    private val orientationHandler: Handler? = Handler()
+    // Unused
+    private var currentColorCode = Color.CYAN
     private var layoutType: Utils.LayoutType = Utils.LayoutType.VIDEO_GALLERY_RVL
     private val deviceWidth = 0
 
@@ -108,7 +101,7 @@ class VideoGalleryUiProvider(
         recyclerView?.adapter = recyclerAdapter
         setLayoutManager()
         exoVideoPlayerProvider = ExoVideoPlayerProvider(view, coreActivity, exoVideoPlayerInterface)
-        exoVideoPlayerProvider?.initExoPlayerUI(currentVideoGallery?.catColorCode, 0)
+        exoVideoPlayerProvider?.initExoPlayerUI(currentColorCode, 0)
         readDataFromBundle()
         recyclerView?.layoutManager = galleryRvLayoutManager
         exoVideoPlayerProvider?.onActivityCreated(savedInstanceState)
@@ -118,13 +111,9 @@ class VideoGalleryUiProvider(
         detectActivityCurrentOrientation()
     }
 
-    /***
-     *
-     * @param bundle
-     */
     private fun readDataFromBundle() {
         try {
-            val videoJson = Utils.readJSONFromAssetFile(videoApp, "radio.json")
+            val videoJson = Utils.readJSONFromAssetFile(videoApp, "gallery.json")
 
             val typeToken = object : TypeToken<List<VideoGallery>>() {}.type
             videoGalleryList.addAll(
@@ -133,12 +122,9 @@ class VideoGalleryUiProvider(
                     typeToken
                 )
             )
-            isPaginationEnabled = videoGalleryList.size == NO_OF_ITEMS_PER_PAGE
             currentVideoGallery = videoGalleryList.removeAt(0)
-            paginationOffset += videoGalleryList.size
             processDataOnVidoeGalleryDetailUI()
             processDataOnVideoGalleryListUI()
-
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -239,6 +225,10 @@ class VideoGalleryUiProvider(
 
     private fun setVideoDetailOnDetailView() {
         currentVideoGallery?.let {
+
+            val heading: String? = currentVideoGallery.title
+            slugTitleTv?.text = Html.fromHtml(heading)
+
             val description: String? = it.description
             if (!TextUtils.isEmpty(description)) {
                 descTv!!.text = Html.fromHtml(description)
@@ -267,19 +257,9 @@ class VideoGalleryUiProvider(
         }
     }
 
-    /***
-     *
-     * @param videoGallery
-     */
-    private fun setSlugTitle(videoGallery: VideoGallery) {
-        val heading: String? = videoGallery.title
-        slugTitleTv?.text = Html.fromHtml(heading)
-    }
 
     fun clearAdapter() {
         recyclerAdapter?.clearAndRemove()
-        isPaginationEnabled = true
-        paginationOffset = 0
     }
 
     private fun setLayoutManager() {
@@ -370,6 +350,7 @@ class VideoGalleryUiProvider(
             val videoGalleryListItem =
                 VideoGalleryListItem(layoutType, deviceWidth, onVideoGalleryListItemClickListener)
             videoGalleryListItem.setData(currentVideoGallery)
+
             recyclerAdapter?.add(videoGalleryListItem)
         }
         currentVideoGallery = selectedVideoGallery

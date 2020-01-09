@@ -10,11 +10,15 @@ class DashboardActivity : CoreActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        playBtn.setOnClickListener {
+        /*playBtn.setOnClickListener {
             val bundle = Bundle()
             val videoUrl = "https://www.radiantmediaplayer.com/media/bbb-360p.mp4"
             bundle.putString(Utils.VIDEO_URL, videoUrl)
             ExoVideoPlayerActivity.startExoPlayerActivity(this, bundle)
+        }*/
+
+        playBtn.setOnClickListener {
+            VideoGalleryActivity.startExoVideoGalleryActivity(this, null)
         }
     }
 }
