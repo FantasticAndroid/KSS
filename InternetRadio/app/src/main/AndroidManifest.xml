@@ -20,7 +20,10 @@
             android:name=".activities.InternetRadioActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
-
+            <intent-filter>
+            <action android:name="com.news.demo.debug.internet.radio"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,6 +1,8 @@
 package com.android.videogallery
 
+import android.app.Activity
 import android.content.Context
+import android.util.DisplayMetrics
 import android.util.Log
 import android.widget.ImageView
 import com.android.videogallery.providers.ExoVideoPlayerProvider
@@ -13,14 +15,15 @@ class Utils {
     companion object {
         val KEY_AUDIO_PLAYBACK_EVENT = "key_audio_playback_event"
         //String KEY_IS_COMING_FROM_HAMBURGER_MENU = "key_is_coming_from_hamburger_menu";
-        var ACTION_BROADCAST_PLAYBACK_CONTROL =
+        val ACTION_BROADCAST_PLAYBACK_CONTROL =
             BuildConfig.APPLICATION_ID + ExoVideoPlayerProvider::class.java.simpleName
 
-        var VIDEO_URL = "video_url"
+        val VIDEO_URL = "video_url"
+        val KEY_VIDEO_CURRENT_POSITION = "key_video_current_position"
         /*String KEY_LAYOUT_TYPE = "key_layout_type";*/
-        var KEY_EXO_PLAYER_POSITION = "key_exo_player_position"
-        var KEY_EXO_PLAYER_WINDOW = "key_exo_player_window"
-        var KEY_VIDEO_DURATION = "key_video_duration"
+        val KEY_EXO_PLAYER_POSITION = "key_exo_player_position"
+        val KEY_EXO_PLAYER_WINDOW = "key_exo_player_window"
+        val KEY_VIDEO_DURATION = "key_video_duration"
         val KEY_IS_SCREEN_ORIENTATION_LOCKED = "key_screen_orientation_locked"
 
         val KEY_GALLERY_LAYOUT_TYPE = "key_gallery_layout_type"
@@ -92,7 +95,27 @@ class Utils {
             }
             return requestOptions
         }
+
+        /**
+         * @param activity
+         * @return an array having width in 0 index and height in 1 index
+         */
+        fun getDeviceWidthAndHeight(activity: Activity): IntArray {
+            val wh = IntArray(2)
+            try {
+                val displaymetrics = DisplayMetrics()
+                activity.windowManager.defaultDisplay
+                    .getMetrics(displaymetrics)
+                wh[0] = displaymetrics.widthPixels
+                wh[1] = displaymetrics.heightPixels
+            } catch (e: java.lang.Exception) {
+                e.printStackTrace()
+            }
+            return wh
+        }
     }
+
+
 
     enum class LayoutType {
         VIDEO_GALLERY_RVL, VIDEO_GALLERY_RVG, VIDEO_GALLERY_RVH
