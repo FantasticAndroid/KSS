@@ -10,7 +10,7 @@ import com.sample.android.R
 
 class DrawerMenuItemAdapter(
     private val context: Context,
-    private val menuTitleList: List<String>?,
+    private val menuTitleList: MutableList<String>?,
     menuInterface: OnMenuClickListener
 ) :
     RecyclerView.Adapter<DrawerMenuItemAdapter.DrawerMenuItemViewHolder>() {

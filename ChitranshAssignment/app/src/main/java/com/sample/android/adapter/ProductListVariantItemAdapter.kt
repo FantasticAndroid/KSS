@@ -20,10 +20,7 @@ class ProductListVariantItemAdapter(
 
     private val mInflater = LayoutInflater.from(context)
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ProductListVariantItemViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListVariantItemViewHolder {
         val view =
             mInflater.inflate(R.layout.layout_adapter_product_list_variant_item, parent, false)
         return ProductListVariantItemViewHolder(view)
@@ -37,8 +34,12 @@ class ProductListVariantItemAdapter(
         try {
             val variantModel = variantList?.get(position)
             holder.tvColorName.text = variantModel?.prodColorName
-            holder.tvSize.text = variantModel?.prodSize.toString()
-            val prodPrice = variantModel?.prodPrice.toString() + "/-"
+            variantModel?.prodSize?.let{
+                val size = "S: $it"
+                holder.tvSize.text = size
+            }?:run { holder.tvSize.text = "-" }
+
+            val prodPrice = "P: " + variantModel?.prodPrice + "/-"
             holder.tvPrice.text = prodPrice
         } catch (e: Exception) {
             Log.e(TAG, "onBindViewHolder: " + e.message)

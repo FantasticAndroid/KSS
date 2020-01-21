@@ -13,7 +13,7 @@ class VariantModel {
     val color: String? = null
     @SerializedName("size")
     @Expose
-    val size: Any? = null
+    val size: String? = null
     @SerializedName("price")
     @Expose
     val price: Int? = null

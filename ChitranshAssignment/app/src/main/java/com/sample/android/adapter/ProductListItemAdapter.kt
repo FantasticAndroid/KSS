@@ -12,19 +12,26 @@ import com.sample.android.R
 import com.sample.android.model.ProductListUIModel
 
 class ProductListItemAdapter(
-    private val context: Context,
-    private val productListUIModelList: List<ProductListUIModel>?
-) : RecyclerView.Adapter<ProductListItemAdapter.ProductListViewHolder>() {
+    private val context: Context) : RecyclerView.Adapter<ProductListItemAdapter.ProductListViewHolder>() {
     companion object {
         private val TAG = ProductListItemAdapter::class.java.simpleName
     }
 
     private val mInflater = LayoutInflater.from(context)
-    private val mLinearLayoutManager = LinearLayoutManager(context)
+    private var productListUIModelList: MutableList<ProductListUIModel> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListViewHolder {
         val view = mInflater.inflate(R.layout.layout_adapter_product_list_item, parent, false)
         return ProductListViewHolder(view)
+    }
+
+    fun setProductList(prodListUIModelList: MutableList<ProductListUIModel>?){
+        prodListUIModelList?.let {
+            notifyItemRangeRemoved(0, productListUIModelList.size)
+            productListUIModelList.clear()
+            productListUIModelList.addAll(it)
+            notifyItemRangeInserted(0, productListUIModelList.size)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -58,7 +65,8 @@ class ProductListItemAdapter(
         productListUIModel: ProductListUIModel?
     ) {
         try {
-            holder.rvProductVariant.layoutManager = mLinearLayoutManager
+            val manager =  LinearLayoutManager(context,RecyclerView.HORIZONTAL,false)
+            holder.rvProductVariant.layoutManager = manager
             val productVariantItemAdapter =
                 ProductListVariantItemAdapter(context, productListUIModel?.productVariantList)
             holder.rvProductVariant.adapter = productVariantItemAdapter

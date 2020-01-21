@@ -19,4 +19,5 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="no_internet_connection">No internet connection. Please try again.</string>
+    <string name="txt_no_data_available">No data available at the moment.</string>
 </resources>

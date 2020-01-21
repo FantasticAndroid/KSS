@@ -13,7 +13,7 @@ class ProductListUIModel(prodName: String?, prodRankingModel: ProductRanking?, p
 
     class ProductVariant {
         var prodColorName: String? = null
-        var prodSize: Int? = 0
+        var prodSize: String? = ""
         var prodPrice: Int? = 0
     }
 }

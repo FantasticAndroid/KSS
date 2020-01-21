@@ -2,8 +2,10 @@ package com.sample.android.activity
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sample.android.R
 import com.sample.android.utils.Utils
@@ -12,9 +14,11 @@ import com.sample.android.base.BaseActivity
 import com.sample.android.fragment.ProductListingFragment
 import com.sample.android.model.CategoryModel
 import com.sample.android.model.ProductListModel
+import com.sample.android.model.ProductListUIModel
 import com.sample.android.network.ApiClient
 import com.sample.android.network.ApiInterface
 import com.sample.android.preferences.ProductPreference
+import com.sample.android.utils.OnCategorySelectionListener
 import kotlinx.android.synthetic.main.layout_activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,11 +29,11 @@ class MainActivity : BaseActivity() {
     companion object {
         private val TAG = MainActivity::class.java.simpleName
     }
-
+    private var catProductMap = HashMap<String,MutableList<ProductListUIModel>>()
     //    private var mExpListAdapter: ExpandableListAdapter? = null
-    private var mExpGroupTitle: MutableList<String>? = null
     //    private var mExpMenuChildTitle: HashMap<String, List<String>>? = null
     private var mActionBarDrawerToggle: ActionBarDrawerToggle? = null
+    private var productListingFragment:ProductListingFragment?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,13 +75,15 @@ class MainActivity : BaseActivity() {
                 ) {
                     val productListModel = response.body()
                     if (null != productListModel) {
-                        val categoryList = productListModel.categoryList
+                        prepareDataForUI(productListModel)
+                        prepareRecyclerView(catProductMap.keys)
+                        /*val categoryList = productListModel.categoryList
                         categoryList?.let { list ->
                             if (list.isNotEmpty()) {
                                 ProductPreference.getInstance(this@MainActivity).addObjectToString(productListModel)
                                 prepareDrawerMenuData(list)
                             }
-                        }
+                        }*/
                     }
                 }
 
@@ -92,42 +98,109 @@ class MainActivity : BaseActivity() {
     }
 
     /**
-     * This method is used to prepare data from drawer menu
-     *
-     * @param categoryList: This list contains category related stuff i.e. id, nameOfCategory, products & child categories
+     * This method is used to prepare data for UI rendering
      */
-    private fun prepareDrawerMenuData(categoryList: List<CategoryModel>) {
-        try {// Prepare child menu title for expandable listview
-            mExpGroupTitle = ArrayList()
-            for (categoryModel in categoryList) {
-                categoryModel.name?.let { name ->
-                    mExpGroupTitle?.add(name.trim())
+    private fun prepareDataForUI(productListModel:ProductListModel) {
+        try {
+            // Parse category & it's product related stuff i.e. product, variant
+            productListModel?.let { productListModel ->
+                // Below code for parsing product related information to be shown in the list
+                val categoryList = productListModel.categoryList
+                if (null != categoryList && categoryList.isNotEmpty()) {
+                    for (categoryModel in categoryList) {
+                        var productListUIModelList: MutableList<ProductListUIModel> = ArrayList()
+
+                        val productList = categoryModel.productListModel
+                        if (null != productList && productList.isNotEmpty()) {
+                            for (productModel in productList) {
+                                val productRankingModel = ProductListUIModel.ProductRanking()
+                                val productVariantList: MutableList<ProductListUIModel.ProductVariant> = ArrayList()
+                                val variantList = productModel.variantList
+                                if (null != variantList && variantList.isNotEmpty()) {
+                                    for (variantModel in variantList) {
+                                        val productVariant = ProductListUIModel.ProductVariant()
+                                        productVariant.prodColorName = variantModel.color
+                                        productVariant.prodSize = variantModel.size
+                                        productVariant.prodPrice = variantModel.price
+                                        productVariantList.add(productVariant)
+                                    }
+                                }
+                                // Below code for parsing ranking of products to be shown in the list
+                                val rankingList = productListModel.rankingList
+                                if (null != rankingList && rankingList.isNotEmpty()) {
+                                    val mostViewedProdList = rankingList[0].productDetailList
+                                    val mostOrderedProdList = rankingList[1].productDetailList
+                                    val mostSharedProdList = rankingList[2].productDetailList
+                                    //                                val productRankingModel = ProductListUIModel.ProductRanking()
+                                    if (null != mostViewedProdList && mostViewedProdList.isNotEmpty()) {
+                                        for (mostViewedProdModel in mostViewedProdList) {
+                                            if (mostViewedProdModel.id == productModel.id) {
+                                                productRankingModel.mostViewed =
+                                                    mostViewedProdModel.viewCount
+                                                //                                            productRankingList.add(productRankingModel)
+                                            }
+                                        }
+                                    }
+                                    if (null != mostOrderedProdList && mostOrderedProdList.isNotEmpty()) {
+                                        for (mostOrderedModel in mostOrderedProdList) {
+                                            if (mostOrderedModel.id == productModel.id) {
+                                                productRankingModel.mostOrdered =
+                                                    mostOrderedModel.orderCount
+                                                //                                            productRankingList.add(productRankingModel)
+                                            }
+                                        }
+                                    }
+                                    if (null != mostSharedProdList && mostSharedProdList.isNotEmpty()) {
+                                        for (mostSharedModel in mostSharedProdList) {
+                                            if (mostSharedModel.id == productModel.id) {
+                                                productRankingModel.mostShared =
+                                                    mostSharedModel.shareCount
+                                                //                                            productRankingList.add(productRankingModel)
+                                            }
+                                        }
+                                    }
+                                }
+                                val productListUIModel =
+                                    ProductListUIModel(
+                                        productModel.name,
+                                        productRankingModel,
+                                        productVariantList
+                                    )
+                                productListUIModelList.add(productListUIModel)
+
+                            }
+
+                        }
+                        catProductMap[categoryModel.name!!] = productListUIModelList
+                    }
                 }
             }
-            prepareRecyclerView(mExpGroupTitle)
-//        // Prepare group menu titles merging with child menu titles created above
-//        val expandableListDetail = HashMap<String, List<String>>()
         } catch (e: Exception) {
-            Log.e(TAG, "prepareDrawerMenuData: " + e.message)
+            Log.e(TAG, "prepareDataForUI: " + e.message)
         }
     }
+
 
     /**
      * This method is used to prepare recylerview item
      *
      * @param menuTitleList: This list contains category names which will be showing in drawer menu as menu title
      */
-    private fun prepareRecyclerView(menuTitleList: List<String>?) {
+    private fun prepareRecyclerView(menuTitleList: MutableSet<String>) {
         progress.visibility = View.GONE
         try {
             val linearLayoutManager = LinearLayoutManager(this)
             rvMenu.layoutManager = linearLayoutManager
             val drawerMenuItemAdapter = DrawerMenuItemAdapter(
                 this,
-                menuTitleList,
+                ArrayList(menuTitleList),
                 object : DrawerMenuItemAdapter.OnMenuClickListener {
                     override fun onMenuItemClicked(menuTitle: String, position: Int) {
-                        loadFragment(menuTitle)
+                        catProductMap.get(menuTitle)?.let {
+                            toolbar.title = menuTitle
+                            productListingFragment?.onCategorySelected(it)
+                            drawerLayout.closeDrawer(GravityCompat.START)
+                        }
                     }
                 })
             rvMenu.adapter = drawerMenuItemAdapter
@@ -154,7 +227,9 @@ class MainActivity : BaseActivity() {
                 drawerLayout.addDrawerListener(actionBarDrawerToggle)
                 actionBarDrawerToggle.syncState()
             }
-            mExpGroupTitle?.get(0)?.let { loadFragment(it) }
+
+            loadFragment(catProductMap.keys.first())
+
         } catch (e: Exception) {
             Log.e(TAG, "prepareRecyclerView: " + e.message)
         }
@@ -167,15 +242,17 @@ class MainActivity : BaseActivity() {
      */
     private fun loadFragment(menuTitle: String) {
         try {
-            val fragment = ProductListingFragment()
+            productListingFragment = ProductListingFragment.newInstance()
             val fragmentManager = supportFragmentManager
-            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit()
-            title = menuTitle
-            drawerLayout.closeDrawer(rvMenu)
+            fragmentManager.beginTransaction().replace(R.id.content_frame, productListingFragment!!).commit()
+            toolbar.title = menuTitle
+            drawerLayout.closeDrawer(GravityCompat.START)
+            productListingFragment?.onCategorySelected(catProductMap[menuTitle])
         } catch (e: Exception) {
             Log.e(TAG, "loadFragment: " + e.message)
         }
     }
+
 
     //        mExpMenuChildTitle = getData()
 //        mExpGroupTitle = mExpMenuChildTitle?.keys?.let { ArrayList<String>(it) }
