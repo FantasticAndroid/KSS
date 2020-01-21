@@ -23,13 +23,17 @@ import kotlinx.android.synthetic.main.layout_activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
+import kotlin.collections.HashSet
 
 
 class MainActivity : BaseActivity() {
     companion object {
         private val TAG = MainActivity::class.java.simpleName
     }
-    private var catProductMap = HashMap<String,MutableList<ProductListUIModel>>()
+    private var catProductMap = TreeMap<String,MutableList<ProductListUIModel>>()
     //    private var mExpListAdapter: ExpandableListAdapter? = null
     //    private var mExpMenuChildTitle: HashMap<String, List<String>>? = null
     private var mActionBarDrawerToggle: ActionBarDrawerToggle? = null
@@ -46,6 +50,7 @@ class MainActivity : BaseActivity() {
         } else {
             Utils.showToastMessage(this, getString(R.string.no_internet_connection))
         }
+        loadFragment()
     }
 
     private fun setupToolbar() {
@@ -77,6 +82,7 @@ class MainActivity : BaseActivity() {
                     if (null != productListModel) {
                         prepareDataForUI(productListModel)
                         prepareRecyclerView(catProductMap.keys)
+                        setDataOnUi(catProductMap.keys.first())
                         /*val categoryList = productListModel.categoryList
                         categoryList?.let { list ->
                             if (list.isNotEmpty()) {
@@ -103,7 +109,7 @@ class MainActivity : BaseActivity() {
     private fun prepareDataForUI(productListModel:ProductListModel) {
         try {
             // Parse category & it's product related stuff i.e. product, variant
-            productListModel?.let { productListModel ->
+            
                 // Below code for parsing product related information to be shown in the list
                 val categoryList = productListModel.categoryList
                 if (null != categoryList && categoryList.isNotEmpty()) {
@@ -162,7 +168,7 @@ class MainActivity : BaseActivity() {
                                 }
                                 val productListUIModel =
                                     ProductListUIModel(
-                                        productModel.name,
+                                        productModel.name?.trim(),
                                         productRankingModel,
                                         productVariantList
                                     )
@@ -171,15 +177,21 @@ class MainActivity : BaseActivity() {
                             }
 
                         }
-                        catProductMap[categoryModel.name!!] = productListUIModelList
+                        catProductMap[categoryModel.name!!.trim()] = productListUIModelList
                     }
                 }
-            }
+
         } catch (e: Exception) {
             Log.e(TAG, "prepareDataForUI: " + e.message)
         }
     }
 
+
+    private fun setDataOnUi(catName:String){
+        toolbar.title = catName
+        productListingFragment?.onCategorySelected(catProductMap.get(catName))
+
+    }
 
     /**
      * This method is used to prepare recylerview item
@@ -197,8 +209,7 @@ class MainActivity : BaseActivity() {
                 object : DrawerMenuItemAdapter.OnMenuClickListener {
                     override fun onMenuItemClicked(menuTitle: String, position: Int) {
                         catProductMap.get(menuTitle)?.let {
-                            toolbar.title = menuTitle
-                            productListingFragment?.onCategorySelected(it)
+                            setDataOnUi(menuTitle)
                             drawerLayout.closeDrawer(GravityCompat.START)
                         }
                     }
@@ -227,9 +238,6 @@ class MainActivity : BaseActivity() {
                 drawerLayout.addDrawerListener(actionBarDrawerToggle)
                 actionBarDrawerToggle.syncState()
             }
-
-            loadFragment(catProductMap.keys.first())
-
         } catch (e: Exception) {
             Log.e(TAG, "prepareRecyclerView: " + e.message)
         }
@@ -240,14 +248,14 @@ class MainActivity : BaseActivity() {
      *
      * @param menuTitle To show as a title
      */
-    private fun loadFragment(menuTitle: String) {
+    private fun loadFragment() {
         try {
             productListingFragment = ProductListingFragment.newInstance()
             val fragmentManager = supportFragmentManager
             fragmentManager.beginTransaction().replace(R.id.content_frame, productListingFragment!!).commit()
-            toolbar.title = menuTitle
+           /*
             drawerLayout.closeDrawer(GravityCompat.START)
-            productListingFragment?.onCategorySelected(catProductMap[menuTitle])
+            productListingFragment?.onCategorySelected(catProductMap[menuTitle])*/
         } catch (e: Exception) {
             Log.e(TAG, "loadFragment: " + e.message)
         }
