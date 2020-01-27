@@ -4,5 +4,5 @@
     android:id="@+id/video_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:controller_layout_id="@layout/layout_exo_player_rv_controller"
+    app:controller_layout_id="@layout/layout_video_listing_exo_player_controller"
     app:resize_mode="fill" />

@@ -40,4 +40,13 @@
         android:layout_height="wrap_content"
         android:text="Play Video Big List" />
 
+    <Button
+        android:layout_marginTop="@dimen/_15sdp"
+        android:id="@+id/playVideoGalleryListing"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play Video Listing" />
+
+
 </LinearLayout>

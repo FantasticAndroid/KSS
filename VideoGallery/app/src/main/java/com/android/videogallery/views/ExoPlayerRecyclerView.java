@@ -434,7 +434,7 @@ public final class ExoPlayerRecyclerView extends RecyclerView {
         onPausePlayer();
         Bundle bundle = new Bundle();
         bundle.putString(Utils.Companion.getVIDEO_URL(), videoGallery.getVideoUrl());
-        bundle.putLong(Utils.Companion.getKEY_VIDEO_CURRENT_POSITION(), currentPosition);
+        bundle.putLong(Utils.Companion.getKEY_EXO_PLAYER_POSITION(), currentPosition);
         ExoVideoPlayerActivity.Companion.startExoPlayerActivity(context, bundle);
     }
 

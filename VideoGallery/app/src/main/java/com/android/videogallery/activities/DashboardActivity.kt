@@ -48,5 +48,17 @@ class DashboardActivity : CoreActivity() {
             bundle.putInt(Utils.KEY_GALLERY_LAYOUT_COLOR, Color.BLUE)
             VideoGalleryActivity.startExoVideoGalleryActivity(this, bundle)
         }
+
+        playVideoGalleryListing.setOnClickListener {
+            /*val bundle = Bundle()
+            bundle.putSerializable(
+                Utils.KEY_GALLERY_LAYOUT_TYPE,
+                Utils.LayoutType.VIDEO_GALLERY_RVG
+            )
+            bundle.putInt(Utils.KEY_GALLERY_LAYOUT_COLOR, Color.BLUE)*/
+            VideoListingActivity.startActivity(this, null)
+        }
+
+
     }
 }

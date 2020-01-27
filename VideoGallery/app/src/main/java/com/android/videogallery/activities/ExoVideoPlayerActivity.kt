@@ -39,6 +39,7 @@ class ExoVideoPlayerActivity : CoreActivity() {
                 bundle.getLong(Utils.KEY_EXO_PLAYER_POSITION, 0)
             val videoDuration =
                 bundle.getInt(Utils.KEY_VIDEO_DURATION, 0)
+
             exoVideoPlayerProvider = ExoVideoPlayerProvider(view, this, exoVideoPlayerInterface)
             exoVideoPlayerProvider!!.initExoPlayerUI(Color.MAGENTA, videoDuration)
             exoVideoPlayerProvider!!.onActivityCreate(videoUrlActual!!)

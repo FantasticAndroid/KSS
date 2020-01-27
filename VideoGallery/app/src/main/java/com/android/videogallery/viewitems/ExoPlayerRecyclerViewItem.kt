@@ -13,9 +13,12 @@ import com.android.videogallery.Utils
 import com.android.videogallery.adapters.AdapterItem
 import com.android.videogallery.adapters.RecyclerAdapterNotifier
 import com.android.videogallery.adapters.RecyclerAdapterViewHolder
+import com.android.videogallery.callbacks.OnVideoItemSelectionListener
 import com.android.videogallery.models.VideoGallery
 
-class ExoPlayerRecyclerViewItem(val videoApp: VideoApp, val videoGallery: VideoGallery, val deviceWidth: Int) :
+class ExoPlayerRecyclerViewItem(val videoApp: VideoApp,private val videoGallery: VideoGallery,
+                                private val deviceWidth: Int,
+                                private val onVideoItemSelectionListener:OnVideoItemSelectionListener):
         AdapterItem<ExoPlayerRecyclerViewItem.ExoPlayerRvHolder>() {
 
     override fun getLayoutId(): Int {
@@ -44,8 +47,9 @@ class ExoPlayerRecyclerViewItem(val videoApp: VideoApp, val videoGallery: VideoG
         }
 
         holder.title.setOnClickListener(View.OnClickListener {
-            RxEventUtils.sendEventWithDataAndFilter(holder.rxBus,
-                    NavigationEvent.EVENT_VIDEO_ITEM_CLICKED, videoGallery, videoGallery.reponseFilter)
+            onVideoItemSelectionListener.onVideoItemSelected(videoGallery)
+            /*RxEventUtils.sendEventWithDataAndFilter(holder.rxBus,
+                    NavigationEvent.EVENT_VIDEO_ITEM_CLICKED, videoGallery, videoGallery.reponseFilter)*/
         })
     }
 
