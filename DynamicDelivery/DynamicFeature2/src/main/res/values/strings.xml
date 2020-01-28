@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="this_is_feature_2_ui">This is Feature 2 UI</string>
+    <string name="this_is_feature_other_ui">This is Feature Other UI</string>
+</resources>

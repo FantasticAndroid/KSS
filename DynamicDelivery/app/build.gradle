@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.COMPILE_SDK
+    defaultConfig {
+        minSdkVersion rootProject.ext.MIN_SDK
+        targetSdkVersion rootProject.ext.TARGET_SDK
+        applicationId "com.android.dynamic.delivery"
+        versionCode rootProject.ext.VERSION_CODE
+        versionName rootProject.ext.VERSION_NAME
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dynamicFeatures = [":DynamicFeature1", ":DynamicFeature2"]
+
+    flavorDimensions "default"
+    productFlavors {
+        production {
+            dimension "default"
+        }
+        staging {
+            dimension "default"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // Use "api" instead  of "implementation" for the dependencies used in Dynamic Delivery modules also
+    api 'androidx.appcompat:appcompat:1.1.0'
+    api 'com.google.android.play:core:1.6.4'
+    api 'androidx.core:core-ktx:1.1.0'
+    api 'androidx.constraintlayout:constraintlayout:1.1.3'
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}

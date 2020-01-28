@@ -1,0 +1,32 @@
+apply plugin: 'com.android.dynamic-feature'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.COMPILE_SDK
+    defaultConfig {
+        minSdkVersion rootProject.ext.MIN_SDK
+        targetSdkVersion rootProject.ext.TARGET_SDK
+        versionCode rootProject.ext.VERSION_CODE
+        versionName rootProject.ext.VERSION_NAME
+        manifestPlaceholders = [isDynamicFeatureOnDemand: rootProject.ext.IS_DF_ON_DEMAND]
+    }
+
+    /**
+     * It is mandatory to add same flavours here those are added in app module
+     */
+    flavorDimensions "default"
+    productFlavors {
+        production {
+            dimension "default"
+        }
+        staging {
+            dimension "default"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':app')
+}
