@@ -113,12 +113,13 @@
     </LinearLayout>
 
     <ImageView
+        android:background="@drawable/back_circle_filled"
         android:id="@+id/iv_visual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:padding="5dp"
-        android:src="@drawable/ic_equalizer_white_36dp"
+        android:src="@drawable/ic_equalizer"
         app:layout_anchor="@id/tv_station_name_category"
         app:layout_anchorGravity="bottom|end" />
 

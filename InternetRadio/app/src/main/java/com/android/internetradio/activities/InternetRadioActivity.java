@@ -167,7 +167,7 @@ public final class InternetRadioActivity extends CoreActivity implements
     private void processUIComponent() {
         /** Make an visualizer animation for Visualizer view  **/
         animationDrawable = (AnimationDrawable)
-                ContextCompat.getDrawable(this, R.drawable.ic_equalizer_white_36dp);
+                ContextCompat.getDrawable(this, R.drawable.ic_equalizer);
         visualizerView.setImageDrawable(animationDrawable);
 
         channelSpinner.setBackgroundResource(R.drawable.selector_nice_spinner);
@@ -177,7 +177,6 @@ public final class InternetRadioActivity extends CoreActivity implements
         artistNameTv.setSelected(true);
         albumNameTv.setSelected(true);
     }
-
 
     /**
      * Get FM Model with THResponse from Server

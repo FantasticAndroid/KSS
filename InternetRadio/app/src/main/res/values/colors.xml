@@ -6,6 +6,7 @@
     <color name="colorPrimary">#dd4b00</color>
     <color name="colorPrimaryDark">#cc3a00</color>
     <color name="colorAccent">@color/blue</color>
+    <color name="color_visual">#FFFFFF</color>
     <color name="blue">#005fbc</color>
     <color name="fmenu_ripple">#1D000000</color>
     <color name="white">#FFFFFF</color>
