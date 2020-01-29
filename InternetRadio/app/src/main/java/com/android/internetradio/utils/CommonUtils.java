@@ -69,7 +69,7 @@ public class CommonUtils {
                     builder = new AlertDialog.Builder(activity);
 
                 // builder.setTitle("Alert!");
-                builder.setIcon(R.mipmap.ic_launcher);
+                builder.setIcon(R.drawable.ic_radio_small);
                 if (message != null)
                     builder.setMessage(message);
 
