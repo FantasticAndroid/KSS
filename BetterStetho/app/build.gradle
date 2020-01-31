@@ -19,6 +19,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -30,6 +38,9 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:retrofit:2.7.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
-    debugApi project(':StethoDebugLib')
-    releaseApi project(':StethoReleaseLib')
+    /*debugApi project(':StethoDebugLib')
+    releaseApi project(':StethoReleaseLib')*/
+
+    debugImplementation project(':StethoDebugLib')
+    releaseImplementation project(':StethoReleaseLib')
 }
