@@ -69,7 +69,7 @@
         "radio_id": "9",
         "radio_name": "VirtualDJ Radio PowerBase",
         "radio_url": "http://52.0.120.216:8000/channel4.mp3",
-        "radio_icon": "https://visuals.dbnewshub.com/bhaskar/cms-assets/radio/icons/2018-09/radiover7.png",
+        "radio_icon": "radiover7.png",
         "radio_category_id": "1003",
         "radio_channel_id": "102"
       },
