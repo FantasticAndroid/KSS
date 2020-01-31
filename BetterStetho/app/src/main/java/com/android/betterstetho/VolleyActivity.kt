@@ -34,9 +34,8 @@ class VolleyActivity : CoreActivity() {
                     tv.text = error.message
                 })
 
-
+        stringRequest.setShouldCache(false)
         ApiClient(coreApp).addRequestInQueue(stringRequest)
     }
-
 
 }

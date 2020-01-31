@@ -1,10 +1,13 @@
 package com.android.stethodebug
 
+import android.content.Context
+import android.util.Log
 import com.android.volley.AuthFailureError
 import com.android.volley.Header
 import com.android.volley.Request
 import com.android.volley.toolbox.BaseHttpStack
 import com.android.volley.toolbox.HttpResponse
+import com.facebook.stetho.Stetho
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import okhttp3.Headers
 import okhttp3.MediaType
@@ -17,6 +20,10 @@ import java.util.concurrent.TimeUnit
 class VolleyUtil {
 
     companion object {
+
+        fun initStethoAccordingly(context: Context) {
+            Stetho.initializeWithDefaults(context)
+        }
 
         fun getHttpTask():BaseHttpStack{
             return VolleyOkHttp3StackInterceptors()
@@ -69,6 +76,7 @@ class VolleyUtil {
 
             val stethoInterceptor = StethoInterceptor()
             clientBuilder.addNetworkInterceptor(stethoInterceptor)
+            Log.d("VolleyUtil","StethoInterceptor Add")
 
             val client = clientBuilder.build()
             val okHttpRequest = okHttpRequestBuilder.build()

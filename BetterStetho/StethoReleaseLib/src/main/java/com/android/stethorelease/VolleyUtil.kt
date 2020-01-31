@@ -1,5 +1,6 @@
 package com.android.stethorelease
 
+import android.content.Context
 import com.android.volley.toolbox.BaseHttpStack
 import com.android.volley.toolbox.HurlStack
 
@@ -9,6 +10,11 @@ class VolleyUtil {
 
         fun getHttpTask(): BaseHttpStack {
             return HurlStack()
+        }
+
+        fun initStethoAccordingly(context: Context) {
+            // Do not init Stetho in Release Build
+            /*Stetho.initializeWithDefaults(context)*/
         }
 
         /*fun getVolley(context: Context):RequestQueue {
