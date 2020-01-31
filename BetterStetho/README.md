@@ -12,6 +12,3 @@ To check how it works, please go through the app module.
 
 ### Libraries integrated-
 Stetho 1.5.1 from (http://facebook.github.io/stetho/)
-
-#### Screenshots-
-![video](https://github.com/FantasticAndroid/KSS/blob/master/InternetRadio/video.gif)
