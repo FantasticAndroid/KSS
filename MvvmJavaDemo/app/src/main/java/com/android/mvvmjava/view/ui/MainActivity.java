@@ -1,12 +1,11 @@
 package com.android.mvvmjava.view.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
 import com.android.mvvmjava.R;
+import com.android.mvvmjava.view.ui.base.CoreActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends CoreActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

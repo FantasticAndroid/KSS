@@ -45,6 +45,10 @@ public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.
         binding.executePendingBindings();
     }
 
+    /***
+     *
+     * @param projectList
+     */
     public void setProjectList(final List<? extends Project> projectList) {
         if (this.projectList == null) {
             this.projectList = projectList;

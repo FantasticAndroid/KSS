@@ -3,27 +3,32 @@ package com.android.mvvmjava.view.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Lifecycle;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.android.mvvmjava.R;
 import com.android.mvvmjava.databinding.FragmentProjectListBinding;
 import com.android.mvvmjava.service.model.Project;
 import com.android.mvvmjava.view.adapters.ProjectListAdapter;
 import com.android.mvvmjava.view.callbacks.OnProjectSelectionCallback;
+import com.android.mvvmjava.view.ui.base.CoreFragment;
+import com.android.mvvmjava.viewmodel.ProjectListViewModel;
 
-/**
- * A simple {@link Fragment} subclass.
+import java.util.List;
+
+/***
+ *
  */
-public class ProjectListFragment extends Fragment {
+public class ProjectListFragment extends CoreFragment {
 
     public static final String TAG = ProjectListFragment.class.getSimpleName();
     private FragmentProjectListBinding binding;
@@ -57,20 +62,42 @@ public class ProjectListFragment extends Fragment {
             @Override
             public void onProjectSelected(Project project) {
                 if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED)) {
-                    showProjectDetailFragment();
+                    showProjectDetailFragment(project);
                 }
             }
         });
         binding.projectList.setAdapter(projectListAdapter);
     }
 
-    private void showProjectDetailFragment() {
-        /*ProjectFragment projectFragment = ProjectFragment.forProject(project.name);
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ProjectListViewModel projectListViewModel = ViewModelProvider.AndroidViewModelFactory
+                .getInstance(mvvmApp).create(ProjectListViewModel.class);
+        observeViewModel(projectListViewModel);
+    }
 
-        getSupportFragmentManager()
+    private void observeViewModel(ProjectListViewModel projectListViewModel) {
+        projectListViewModel.getProjectListObs().observe(getViewLifecycleOwner(),
+                new Observer<List<Project>>() {
+                    @Override
+                    public void onChanged(List<Project> projects) {
+                        if (projects != null) {
+                            binding.setIsLoading(false);
+                            projectListAdapter.setProjectList(projects);
+                        }
+                    }
+                });
+    }
+
+    private void showProjectDetailFragment(Project project) {
+        Log.d(TAG, "showProjectDetailFragment()");
+        ProjectDetailFragment projectFragment = ProjectDetailFragment.getInstance(project.name);
+
+        coreActivity.getSupportFragmentManager()
                 .beginTransaction()
                 .addToBackStack("project")
-                .replace(R.id.fragment_container,
-                        projectFragment, null).commit();*/
+                .replace(R.id.fragmentContainer,
+                        projectFragment, null).commit();
     }
 }
