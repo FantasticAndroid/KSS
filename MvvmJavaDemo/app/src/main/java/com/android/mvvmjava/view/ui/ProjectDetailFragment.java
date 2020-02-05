@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.android.mvvmjava.R;
 import com.android.mvvmjava.databinding.FragmentProjectDetailBinding;
@@ -19,7 +18,7 @@ import com.android.mvvmjava.viewmodel.ProjectDetailViewModel;
 
 public final class ProjectDetailFragment extends CoreFragment {
 
-    FragmentProjectDetailBinding fragmentProjectDetailBinding;
+    private FragmentProjectDetailBinding fragmentProjectDetailBinding;
 
     static ProjectDetailFragment getInstance(String projectId) {
         ProjectDetailFragment projectDetailFragment = new ProjectDetailFragment();
