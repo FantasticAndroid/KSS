@@ -1,0 +1,77 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_insert_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter name to insert"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/button_insert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="INSERT"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/et_update_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter ID to update"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/et_update_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter name value to update"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/button_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="UPDATE"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/et_delete_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter ID to delete"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/button_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="DELETE"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tv_get_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/button_get"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="GET NAMES"
+            android:textColor="#000000" />
+    </LinearLayout>
+</ScrollView>
