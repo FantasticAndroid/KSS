@@ -1,0 +1,3 @@
+include ':aidl_app_client', ':aidl_app_server'
+include ':aidl_lib_server'
+rootProject.name='AIDL-Server-Client'
