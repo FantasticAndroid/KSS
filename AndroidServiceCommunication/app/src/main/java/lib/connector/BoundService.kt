@@ -11,9 +11,9 @@ import android.widget.Toast
 abstract class BoundService:Service(), HandleMessageCallback {
 
     // Target we publish for clients to send messages to IncomingHandler.
-    protected lateinit var receivingMessenger : Messenger
+    private lateinit var receivingMessenger : Messenger
 
-    protected var senderMessenger: Messenger?=null
+    private var senderMessenger: Messenger?=null
 
     protected abstract fun onMessageReceivedFromUI(message: Message)
 

@@ -29,6 +29,8 @@ class DemoBoundIntentService : BoundIntentService(DemoBoundIntentService::class.
 
     override fun onMessageReceivedFromUI(message: Message) {
 
+
+
         when {
             message.what == MessageReceiver.SERVICE_CONNECTED -> Toast.makeText(
                 applicationContext,
