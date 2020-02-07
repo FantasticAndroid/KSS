@@ -8,6 +8,12 @@ import android.os.Messenger
 import android.os.RemoteException
 import android.widget.Toast
 
+/**
+ * Service bounded with Activity to send message between activity-service
+ * @property receivingMessenger Messenger
+ * @property senderMessenger Messenger?
+ * @property isServiceBounded Boolean
+ */
 abstract class BoundService:Service(), HandleMessageCallback {
 
     // Target we publish for clients to send messages to IncomingHandler.

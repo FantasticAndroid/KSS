@@ -8,6 +8,13 @@ import android.os.Messenger
 import android.os.RemoteException
 import android.widget.Toast
 
+/**
+ * Intent Service bounded with Activity to send message between activity-service
+ * @property receivingMessenger Messenger
+ * @property senderMessenger Messenger?
+ * @property isServiceBounded Boolean
+ * @constructor
+ */
 abstract class BoundIntentService(name: String):IntentService(name),HandleMessageCallback {
 
     // Target we publish for clients to send messages to IncomingHandler.
@@ -32,6 +39,7 @@ abstract class BoundIntentService(name: String):IntentService(name),HandleMessag
     }
 
     /***
+     * Send message to Activity
      * @param message
      */
     protected fun sendMessageToUI(message: String) {
@@ -46,6 +54,7 @@ abstract class BoundIntentService(name: String):IntentService(name),HandleMessag
     }
 
     /***
+     * Send message to Activity
      * @param message
      */
     protected fun sendMessageToUI(message: Message) {

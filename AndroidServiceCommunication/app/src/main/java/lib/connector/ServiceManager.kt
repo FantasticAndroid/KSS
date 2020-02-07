@@ -9,6 +9,16 @@ import android.os.*
 import android.widget.Toast
 import java.lang.ref.WeakReference
 
+/**
+ * Manage the whole Activity-Service Communication
+ * @property activity Activity
+ * @property messageReceiver MessageReceiver?
+ * @property appServiceConnection WeakReference<AppServiceConnection>?
+ * @property serviceIntent Intent?
+ * @property senderToService Messenger?
+ * @property messengerReceiver Messenger
+ * @constructor
+ */
 class ServiceManager(
     private val activity: Activity,
     private val messageReceiver: MessageReceiver?
