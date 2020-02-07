@@ -37,6 +37,7 @@ class ServiceLauncherActivity : Activity(), View.OnClickListener {
             }
         })
         sendBtn.setOnClickListener(this)
+        stopBtn.setOnClickListener(this)
     }
 
     override fun onStart() {
@@ -55,7 +56,14 @@ class ServiceLauncherActivity : Activity(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        serviceManager?.sendMessageToService("Message sent from UI to " + service!!.simpleName)
+        when (v.id) {
+            R.id.sendBtn -> {
+                serviceManager?.sendMessageToService("Message sent from UI to " + service!!.simpleName)
+            }
+            R.id.stopBtn -> {
+                serviceManager?.stopService()
+            }
+        }
     }
 
     override fun onDestroy() {

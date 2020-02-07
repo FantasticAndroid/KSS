@@ -14,6 +14,13 @@ import lib.connector.MessageReceiver
 class DemoBoundForegroundService : BoundService() {
 
     private val TAG = DemoBoundForegroundService::class.java.simpleName
+    private val mNotificationId = 21001
+    private lateinit var notificationManager: NotificationManager
+
+    override fun onCreate() {
+        super.onCreate()
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
 
@@ -39,14 +46,11 @@ class DemoBoundForegroundService : BoundService() {
 
         mBuilder.setContentIntent(resultPendingIntent)
 
-        val mNotificationId = 21001
-
         // Gets an instance of the NotificationManager service
-        val mNotifyMgr = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
         // Builds the notification and issues it.
         val notification = mBuilder.build()
-        mNotifyMgr.notify(mNotificationId, mBuilder.build())
-
+        notificationManager.notify(mNotificationId, mBuilder.build())
         startForeground(mNotificationId, notification)
         return super.onStartCommand(intent, flags, startId)
     }
@@ -77,5 +81,10 @@ class DemoBoundForegroundService : BoundService() {
                 .show()
         }
         sendMessageToUI("Message Sent from Bound Forground Service to UI")
+    }
+
+    override fun onDestroy() {
+        notificationManager.cancel(mNotificationId)
+        super.onDestroy()
     }
 }

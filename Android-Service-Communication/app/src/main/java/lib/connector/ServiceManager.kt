@@ -92,7 +92,7 @@ class ServiceManager(
 
     }
 
-    private fun stopService() {
+    fun stopService() {
         try {
             sendMessageToService(Message.obtain(null, MessageReceiver.SERVICE_STOP))
             activity.unbindService(appServiceConnection?.get()!!)

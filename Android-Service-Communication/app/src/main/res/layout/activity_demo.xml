@@ -15,4 +15,13 @@
         android:layout_height="wrap_content"
         android:text="Send Message To Service" />
 
+    <Button
+        android:layout_centerHorizontal="true"
+        android:id="@+id/stopBtn"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/sendBtn"
+        android:text="Stop Running Service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </RelativeLayout>
