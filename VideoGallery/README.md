@@ -11,4 +11,37 @@ Ssp and Sdp 1.0.6 (https://github.com/intuit/ssp) (https://github.com/intuit/sdp
 Androidx Media 1.1.0
 
 #### Screenshots-
-![video](https://github.com/FantasticAndroid/KSS/blob/master/InternetRadio/video.gif)
+
+##### Playing Options
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/1_options-min.png)
+
+##### Video Player
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/2_play_video-min.png)
+
+##### Video Player Landscape
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/3_play_video_horizontal-min.png)
+
+##### Video List
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/4_video_list-min.png)
+
+##### Video Grid
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/5_video_grid-min.png)
+
+##### Video Big List
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/6_video_big_list-min.png)
+
+##### Video Listing
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/7_video_listing-min.png)
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/8_video_listing-min.png)
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/9_video_listing-min.png)
+
+
+
+
+
+
+
+
+
+
+
