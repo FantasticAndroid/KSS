@@ -1,7 +1,9 @@
-# Radio Internet
+# Video Gallery
 
-## What is Radio Internet?
-Radio Internet usages ShoutCast Apis to play Various Radio Channels available on ShoutCast Network. It is basically a demo project illustrate how to develop a basic Radio app in Android using latest Android Media FrameWork with ExoPlayer.
+## What is Video Gallery?
+1. Play Video smoothley and efficiently with Exo Player.
+2. Focus to present Videos in multiple ways like Listing, Griding and many other.
+3. Auto Play Video in listing with Volume On/Off and Full-Screen playing option.
 
 ### Libraries integrated-
 Gson 2.8.6 from (https://github.com/google/gson)
