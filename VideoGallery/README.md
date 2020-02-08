@@ -13,27 +13,27 @@ Androidx Media 1.1.0
 #### Screenshots-
 
 ##### Playing Options
-![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/1_options-min.png)
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/1_options-min.jpg)
 
 ##### Video Player
-![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/2_play_video-min.png)
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/2_play_video-min.jpg)
 
 ##### Video Player Landscape
-![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/3_play_video_horizontal-min.png)
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/3_play_video_horizontal-min.jpg)
 
 ##### Video List
-![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/4_video_list-min.png)
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/4_video_list-min.jpg)
 
 ##### Video Grid
-![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/5_video_grid-min.png)
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/5_video_grid-min.jpg)
 
 ##### Video Big List
-![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/6_video_big_list-min.png)
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/6_video_big_list-min.jpg)
 
 ##### Video Listing
-![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/7_video_listing-min.png)
-![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/8_video_listing-min.png)
-![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/9_video_listing-min.png)
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/7_video_listing-min.jpg)
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/8_video_listing-min.jpg)
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/VideoGallery/screens/9_video_listing-min.jpg)
 
 
 
