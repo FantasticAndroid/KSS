@@ -131,27 +131,27 @@
 //                if (layoutType === LayoutType.VIDEO_GALLERY_RVL) {
 //                    loadImage(
 //                            videoUrl!!,
-//                            thumbIv, R.drawable.ic_db_logo_placeholder_4_3
+//                            thumbIv, R.drawable.ic_placeholder_4_3
 //                    )
 //                } else if (layoutType === LayoutType.VIDEO_GALLERY_RVG) {
 //                    videoUrl =
 //                            if (!TextUtils.isEmpty(videoGallery.squareImageUrl)) videoGallery.squareImageUrl else videoUrl
 //                    loadImage(
 //                            videoUrl!!,
-//                            thumbIv, R.drawable.db_place_holder
+//                            thumbIv, R.drawable.ic_place_holder
 //                    )
 //                    thumbIv.scaleType = ImageView.ScaleType.FIT_XY
 //                } else if (layoutType === LayoutType.VIDEO_GALLERY_RVH) {
 //                    thumbIv.scaleType = ImageView.ScaleType.CENTER_CROP
 //                    loadImage(
 //                            videoUrl!!,
-//                            thumbIv, R.drawable.ic_db_logo_placeholder_4_2,
+//                            thumbIv, R.drawable.ic_placeholder_4_2,
 //                            thumbWidth, thumbWidth / 2
 //                    )
 //                } else {
 //                    loadImage(
 //                            videoUrl!!,
-//                            thumbIv, R.drawable.ic_db_logo_placeholder_4_3
+//                            thumbIv, R.drawable.ic_placeholder_4_3
 //                    )
 //                }
 //            }

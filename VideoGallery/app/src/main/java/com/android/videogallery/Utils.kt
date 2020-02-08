@@ -114,12 +114,7 @@ class Utils {
             return wh
         }
     }
-
-
-
     enum class LayoutType {
         VIDEO_GALLERY_RVL, VIDEO_GALLERY_RVG, VIDEO_GALLERY_RVH
     }
-
-
 }

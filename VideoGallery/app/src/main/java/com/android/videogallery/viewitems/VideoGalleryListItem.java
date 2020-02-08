@@ -164,20 +164,20 @@ public final class VideoGalleryListItem extends AdapterItem<VideoGalleryListItem
 
             if (layoutType == Utils.LayoutType.VIDEO_GALLERY_RVL) {
                 Utils.Companion.loadImage(videoUrl,
-                        thumbIv, R.drawable.ic_db_logo_placeholder_4_3);
+                        thumbIv, R.drawable.ic_placeholder_4_3);
             } else if (layoutType == Utils.LayoutType.VIDEO_GALLERY_RVG) {
                 videoUrl = !TextUtils.isEmpty(videoGallery.getSquareImageUrl()) ? videoGallery.getSquareImageUrl() : videoUrl;
                 Utils.Companion.loadImage(videoUrl,
-                        thumbIv, R.drawable.db_place_holder);
+                        thumbIv, R.drawable.ic_place_holder);
                 thumbIv.setScaleType(ImageView.ScaleType.FIT_XY);
             } else if (layoutType == Utils.LayoutType.VIDEO_GALLERY_RVH) {
                 thumbIv.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 Utils.Companion.loadImage(videoUrl,
-                        thumbIv, R.drawable.ic_db_logo_placeholder_4_2,
+                        thumbIv, R.drawable.ic_placeholder_4_2,
                         thumbWidth, thumbWidth / 2);
             } else {
                 Utils.Companion.loadImage(videoUrl,
-                        thumbIv, R.drawable.ic_db_logo_placeholder_4_3);
+                        thumbIv, R.drawable.ic_placeholder_4_3);
             }
         }
 
