@@ -251,7 +251,6 @@ public class BitmapUtility {
 	/****
 	 * @param bitmap
 	 * @param roundPx
-	 * @param colorCode
 	 * @return
 	 */
 	public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, final int roundPx) {
@@ -391,7 +390,7 @@ public class BitmapUtility {
 	}
 
 	/**
-	 * @param tempStorage
+	 * @param tempStorageForBitmapByteArrayHolder
 	 *            (Temp storage to use for decoding. Suggest 16K or so.)(default
 	 *            you can provide (16*1024)
 	 * @return
@@ -477,7 +476,6 @@ public class BitmapUtility {
 	}
 
 	/**
-	 * @param context
 	 * @param originalImage
 	 *            The original Bitmap image used to create the reflection
 	 * @param reflectionGap
