@@ -1,0 +1,2 @@
+include ':lib', ':sampleapp'
+rootProject.name='DbAbcGameApiSecure'
