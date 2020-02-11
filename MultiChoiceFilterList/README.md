@@ -7,9 +7,4 @@
 4. Easy customization according to needs.
 
 ### Screens
-![Image](https://github.com/FantasticAndroid/KSS/tree/master/MultiChoiceFilterList/screens/1.jpg)
-![Image](https://github.com/FantasticAndroid/KSS/tree/master/MultiChoiceFilterList/screens/2.jpg)
-![Image](https://github.com/FantasticAndroid/KSS/tree/master/MultiChoiceFilterList/screens/3.jpg)
-![Image](https://github.com/FantasticAndroid/KSS/tree/master/MultiChoiceFilterList/screens/4.jpg)
-![Image](https://github.com/FantasticAndroid/KSS/tree/master/MultiChoiceFilterList/screens/5.jpg)
-![Image](https://github.com/FantasticAndroid/KSS/tree/master/MultiChoiceFilterList/screens/6.jpg)
+![Image](https://github.com/FantasticAndroid/KSS/tree/master/MultiChoiceFilterList/screens/1.jpg)![Image](https://github.com/FantasticAndroidKSS/tree/master/MultiChoiceFilterList/screens/2.jpg)![Image](https://github.com/FantasticAndroid/KSS/tree/masterMultiChoiceFilterList/screens/3.jpg)![Image](https://github.com/FantasticAndroid/KSS/tree/master/MultiChoiceFilterList/screens/4.jpg)![Image](https://github.com/FantasticAndroid/KSS/tree/master/MultiChoiceFilterList/screens/5.jpg)![Image](https://github.com/FantasticAndroid/KSS/tree/master/MultiChoiceFilterList/screens/6.jpg)
