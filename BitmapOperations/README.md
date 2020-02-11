@@ -21,5 +21,5 @@ Bitmap Operations is utility app to have some useful Bitmap transormation featur
 16. Bitmap Reset.
 
 ###Screens
-![Image](https://github.com/FantasticAndroid/KSS/blob/master/BitmapOperations/1.png) ![Image](https://github.com/FantasticAndroid/KSS/blob/master/BitmapOperations/2.png)
+![Image](https://github.com/FantasticAndroid/KSS/blob/master/BitmapOperations/screens/1.png) ![Image](https://github.com/FantasticAndroid/KSS/blob/master/BitmapOperations/screens/2.png)
 
