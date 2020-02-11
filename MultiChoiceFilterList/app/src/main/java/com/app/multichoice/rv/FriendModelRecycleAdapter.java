@@ -45,7 +45,7 @@ public final class FriendModelRecycleAdapter extends FilterRecycleAdapter<Friend
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
 
         ViewHolder holder = (ViewHolder) viewHolder;
-        FriendModel FriendModel = (FriendModel) getItem(position);
+        FriendModel FriendModel = getItem(position);
         holder.FriendModelTv.setText(FriendModel.getFriend());
         holder.checkBox.setChecked(FriendModel.isSelected());
         holder.checkBox.setTag(position);
@@ -55,7 +55,7 @@ public final class FriendModelRecycleAdapter extends FilterRecycleAdapter<Friend
             public void onClick(View v) {
                 CheckBox cb = (CheckBox) v;
                 int position = (Integer) v.getTag();
-                FriendModel FriendModel = (FriendModel) getItem(position);
+                FriendModel FriendModel = getItem(position);
                 FriendModel.setSelected(cb.isChecked());
                 notifyDataSetChanged();
 

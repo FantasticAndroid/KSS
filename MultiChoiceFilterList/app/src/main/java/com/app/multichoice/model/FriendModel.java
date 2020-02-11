@@ -32,6 +32,11 @@ public class FriendModel implements Comparable<FriendModel> {
     }
 
     @Override
+    public String toString() {
+        return mFriend;
+    }
+
+    @Override
     public int compareTo(FriendModel another) {
         return this.mFriend.compareTo(another.getFriend());
     }

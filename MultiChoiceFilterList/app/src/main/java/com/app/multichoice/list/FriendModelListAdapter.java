@@ -48,7 +48,7 @@ public final class FriendModelListAdapter extends FilterListAdapter<FriendModel>
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        FriendModel FriendModel = (FriendModel) getItem(position);
+        FriendModel FriendModel = getItem(position);
         holder.FriendModelTv.setText(FriendModel.getFriend());
         holder.checkBox.setChecked(FriendModel.isSelected());
         holder.checkBox.setTag(position);
@@ -58,7 +58,7 @@ public final class FriendModelListAdapter extends FilterListAdapter<FriendModel>
             public void onClick(View v) {
                 CheckBox cb = (CheckBox) v;
                 int position = (Integer) v.getTag();
-                FriendModel FriendModel = (FriendModel) getItem(position);
+                FriendModel FriendModel =  getItem(position);
                 FriendModel.setSelected(cb.isChecked());
                 notifyDataSetChanged();
 

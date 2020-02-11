@@ -201,7 +201,7 @@ public abstract class FilterRecycleAdapter<T> extends RecyclerView.Adapter<Recyc
 
                 ArrayList<T> values;
                 synchronized (mLock) {
-                    values = new ArrayList<T>(mOriginalValues);
+                    values = new ArrayList<>(mOriginalValues);
                 }
 
                 final int count = values.size();
@@ -211,7 +211,7 @@ public abstract class FilterRecycleAdapter<T> extends RecyclerView.Adapter<Recyc
                     final T value = values.get(i);
                     final String valueText = value.toString().toLowerCase();
 
-                    // First match against the whole, non-splitted value
+                    // First match against the whole, non-splited value
                     if (valueText.startsWith(prefixString)) {
                         newValues.add(value);
                     } else {
