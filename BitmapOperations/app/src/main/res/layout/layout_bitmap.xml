@@ -10,7 +10,7 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dip"
@@ -18,176 +18,150 @@
             android:background="@android:color/transparent"
             android:src="@drawable/test" />
 
-
-        <TableLayout
+        <Button
+            android:id="@+id/rotateCW"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:onClick="onButtonClick"
+            android:text="CW"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:typeface="serif" />
 
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:weightSum="3">
+        <Button
+            android:id="@+id/rotateCCW"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonClick"
+            android:text="CCW"
+            android:textStyle="bold"
+            android:typeface="serif" />
 
-                <Button
-                    android:id="@+id/rotateCCW"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="onButtonClick"
-                    android:text="CCW"
-                    android:textStyle="bold"
-                    android:typeface="serif" />
 
-                <Button
-                    android:id="@+id/rotateCW"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="onButtonClick"
-                    android:text="CW"
-                    android:textStyle="bold"
-                    android:typeface="serif" />
+        <Button
+            android:id="@+id/hFlip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-                <Button
-                    android:id="@+id/hFlip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="onButtonClick"
-                    android:text="H-Flip" />
-            </TableRow>
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonClick"
+            android:text="H-Flip" />
 
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:weightSum="3">
 
-                <Button
-                    android:id="@+id/vFlip"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="onButtonClick"
-                    android:text="V-Flip" />
+        <Button
+            android:id="@+id/vFlip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-                <Button
-                    android:id="@+id/enlarge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="onButtonClick"
-                    android:text="large" />
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonClick"
+            android:text="V-Flip" />
 
-                <Button
-                    android:id="@+id/compress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="onButtonClick"
-                    android:text="compress" />
-            </TableRow>
+        <Button
+            android:id="@+id/enlarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:weightSum="3">
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonClick"
+            android:text="large" />
 
-                <Button
-                    android:id="@+id/withBorder"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="onButtonClick"
-                    android:text="WithBorder" />
+        <Button
+            android:id="@+id/compress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-                <Button
-                    android:id="@+id/withRoundedCorner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="onButtonClick"
-                    android:text="RoundCorner" />
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonClick"
+            android:text="compress" />
 
-                <Button
-                    android:id="@+id/contrast"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="onButtonClick"
-                    android:text="Apply Contrast" />
-            </TableRow>
 
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:weightSum="3">
+        <Button
+            android:id="@+id/withBorder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-                <Button
-                    android:id="@+id/applyColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="onButtonClick"
-                    android:text="Apply Color" />
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonClick"
+            android:text="WithBorder" />
 
-                <Button
-                    android:id="@+id/innerBorder"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="onButtonClick"
-                    android:text="Inner Border" />
+        <Button
+            android:id="@+id/withRoundedCorner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-                <Button
-                    android:id="@+id/mergeBitmap"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="onButtonClick"
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonClick"
+            android:text="RoundCorner" />
 
-                    android:text="merge 2 Bitmaps" />
-            </TableRow>
+        <Button
+            android:id="@+id/contrast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonClick"
+            android:text="Apply Contrast" />
 
-                <Button
-                    android:id="@+id/roundRectBorder"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onButtonClick"
-                    android:text="round Rect Border" />
+        <Button
+            android:id="@+id/applyColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-                <Button
-                    android:id="@+id/borderWithPathEffect"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onButtonClick"
-                    android:text="borderWithPathEffect" />
-            </TableRow>
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonClick"
+            android:text="Apply Color" />
 
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
+        <Button
+            android:id="@+id/innerBorder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-                <Button
-                    android:id="@+id/reflection"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onButtonClick"
-                    android:text="REFLECTION" />
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonClick"
+            android:text="Inner Border" />
 
-                <Button
-                    android:id="@+id/reset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onButtonClick"
-                    android:text="RESET" />
-            </TableRow>
-        </TableLayout>
+        <Button
+            android:id="@+id/mergeBitmap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonClick"
+
+            android:text="merge 2 Bitmaps" />
+
+        <Button
+            android:id="@+id/roundRectBorder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonClick"
+            android:text="round Rect Border" />
+
+        <Button
+            android:id="@+id/borderWithPathEffect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonClick"
+            android:text="borderWithPathEffect" />
+
+        <Button
+            android:id="@+id/reflection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonClick"
+            android:text="REFLECTION" />
+
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:onClick="onButtonClick"
+            android:text="RESET" />
     </LinearLayout>
 </ScrollView>
