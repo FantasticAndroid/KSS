@@ -16,10 +16,10 @@ class MainActivity : AppCompatActivity() {
         tv.append(AppSecret.getKeyForDecryptionJNI())
     }
 
-    companion object {
+    /*companion object {
         // Used to load the 'native-lib' library on application startup.
         init {
             System.loadLibrary("native-lib")
         }
-    }
+    }*/
 }

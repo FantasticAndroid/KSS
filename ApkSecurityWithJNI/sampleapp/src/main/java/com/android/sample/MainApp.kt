@@ -9,6 +9,6 @@ class MainApp:Application() {
     }
 
     private fun initNativeLib(){
-       // System.loadLibrary("native-lib.cpp")
+       System.loadLibrary("native-lib")
     }
 }
