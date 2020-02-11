@@ -25,7 +25,8 @@ class AppSecret {
         external fun getKeyForDecryptionJNI(): String
     }
 }
-
+```
+native-lib.cpp
 ```cpp
 #include <jni.h>
 #include <string>
@@ -46,6 +47,7 @@ Java_com_android_ndk_AppSecret_getKeyForDecryptionJNI(
     std::string key = "This is your secure Key for Decryption";
     return env->NewStringUTF(key.c_str());
 }
+```
 
 ### “In sample module”
 ```kotlin
@@ -59,4 +61,4 @@ class MainApp:Application() {
        System.loadLibrary("native-lib")
     }
 }
-
+```
