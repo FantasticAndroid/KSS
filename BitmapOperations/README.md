@@ -20,7 +20,7 @@ Bitmap Operations is utility app to have some useful Bitmap transormation featur
 15. Bitmap apply Reflection.
 16. Bitmap Reset.
 
-###Screens
+### Screens
 
 ![Image](https://github.com/FantasticAndroid/KSS/blob/master/BitmapOperations/screens/1.jpg) ![Image](https://github.com/FantasticAndroid/KSS/blob/master/BitmapOperations/screens/2.jpg)
 
