@@ -1,2 +1,0 @@
-include ':app', ':DynamicFeature1', ':DynamicFeature2'
-rootProject.name='DynamicDelivery'

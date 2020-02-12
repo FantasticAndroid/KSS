@@ -1,2 +1,0 @@
-include ':app', ':StethoDebugLib', ':StethoReleaseLib'
-rootProject.name='BetterStetho'

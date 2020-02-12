@@ -1,3 +1,0 @@
-include ':ProviderApp'
-include ':ProviderUser'
-rootProject.name='ContentProviderDemo'
